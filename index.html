@@ -497,8 +497,8 @@
                     <h2 class="section-title-quiz">Normbereiche zur Orientierung:</h2>
                     <ul>
                         <li><strong>pH:</strong> <span>7,35 - 7,45</span></li>
-                        <li><strong>pCO₂:</strong> <span>35 - 45 mmHg</span></li>
-                        <li><strong>pO₂:</strong> <span>80 - 100 mmHg</span></li>
+                        <li><strong>pCO₂:</strong> <span>32 - 48 mmHg</span></li>
+                        <li><strong>pO₂:</strong> <span>83 - 108 mmHg</span></li>
                         <li><strong>Bicarbonat (HCO₃⁻):</strong> <span>22 - 26 mmol/L</span></li>
                         <li><strong>Basenüberschuss (BE):</strong> <span>-2 bis +2 mmol/L</span></li>
                     </ul>
@@ -510,148 +510,134 @@
                 <div class="scenario" style="animation-delay: 0.0s;">
                     <h2>Szenario 1:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,20</span></p> <p><strong>pCO₂:</strong> <span>60 mmHg</span></p> <p><strong>pO₂:</strong> <span>70 mmHg</span></p> <p><strong>BE:</strong> <span>+1 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>26 mmol/L</span></p> </div>
-                    <label for="s1_primary">Primäre Störung:</label> <input type="text" id="s1_primary" placeholder="z.B. Respiratorische Azidose">
-                    <label for="s1_comp">Kompensation:</label> <input type="text" id="s1_comp" placeholder="z.B. unkompensiert">
+                    <label for="s1_primary">Primäre Störung:</label> <input type="text" id="s1_primary" placeholder="z.B. Metabolische Alkalose">
+                    <label for="s1_comp">Kompensation:</label> <input type="text" id="s1_comp" placeholder="z.B. Partiell Respiratorisch kompensiert">
                     <button class="answer-button" data-answer-id="answer1_quiz"> <svg class="icon-eye-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg> <svg class="icon-eye-closed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;"><path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.44-4.75C21.27 7.61 17 4.5 12 4.5c-1.77 0-3.39.53-4.78 1.44l2.15 2.15c.57-.23 1.18-.36 1.83-.36zm-4.09 1.33L6.54 7.05C4.78 8.1 3.17 9.83 2 12c1.73 4.39 6 7.5 11 7.5 1.55 0 2.98-.34 4.27-.92l-2.92-2.92C13.26 15.87 12.65 16 12 16c-2.76 0-5-2.24-5-5 0-.65.13-1.26.36-1.83L7.91 8.33zM2.71 3.27l2.16 2.16C3.17 6.92 1.73 8.82 1 12c1.73 4.39 6 7.5 11 7.5 2.01 0 3.84-.57 5.39-1.51l2.32 2.32 1.27-1.27L3.98 2 2.71 3.27z"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer1_quiz" class="answer"> <strong class="explanation-title"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm-2 15-5-5 1.41-1.41l3.59 3.59l7.59-7.59l1.41 1.41l-9 9z"></path></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p> <p>2.  <strong>Kompensation:</strong> Unkompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm-2 15-5-5 1.41-1.41l3.59 3.59l7.59-7.59l1.41 1.41l-9 9z"></path></svg> Erklärung: </strong> <p>Der pH ist stark sauer (7,20). Der pCO₂ ist hoch (60 mmHg), was eine Azidose verursacht. HCO₃⁻ und BE sind noch im Normbereich, daher hat keine metabolische Kompensation stattgefunden.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 0.07s;">
                     <h2>Szenario 2:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,58</span></p> <p><strong>pCO₂:</strong> <span>28 mmHg</span></p> <p><strong>pO₂:</strong> <span>98 mmHg</span></p> <p><strong>BE:</strong> <span>-1 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>23 mmol/L</span></p> </div>
-                    <label for="s2_primary">Primäre Störung:</label> <input type="text" id="s2_primary" placeholder="z.B. Respiratorische Alkalose">
-                    <label for="s2_comp">Kompensation:</label> <input type="text" id="s2_comp" placeholder="z.B. unkompensiert">
+                    <label for="s2_primary">Primäre Störung:</label> <input type="text" id="s2_primary" placeholder="">
+                    <label for="s2_comp">Kompensation:</label> <input type="text" id="s2_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer2_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer2_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Alkalose</p> <p>2.  <strong>Kompensation:</strong> Unkompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist stark basisch (7,58). Der pCO₂ ist niedrig (28 mmHg), was eine Alkalose verursacht. HCO₃⁻ und BE sind im Normbereich, daher hat keine metabolische Kompensation stattgefunden.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 0.14s;">
                     <h2>Szenario 3:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,32</span></p> <p><strong>pCO₂:</strong> <span>52 mmHg</span></p> <p><strong>pO₂:</strong> <span>85 mmHg</span></p> <p><strong>BE:</strong> <span>+6 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>30 mmol/L</span></p> </div>
-                    <label for="s3_primary">Primäre Störung:</label> <input type="text" id="s3_primary" placeholder="z.B. Respiratorische Azidose">
-                    <label for="s3_comp">Kompensation:</label> <input type="text" id="s3_comp" placeholder="z.B. partiell kompensiert">
+                    <label for="s3_primary">Primäre Störung:</label> <input type="text" id="s3_primary" placeholder="">
+                    <label for="s3_comp">Kompensation:</label> <input type="text" id="s3_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer3_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer3_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p> <p>2.  <strong>Kompensation:</strong> Partiell metabolisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist sauer (7,32). Der pCO₂ ist hoch (52 mmHg), was die Azidose verursacht. HCO₃⁻ und BE sind erhöht (30 mmol/L, +6), was eine Kompensation der Nieren zur Pufferung der Säure anzeigt. Da der pH aber noch nicht im Normbereich ist, ist die Kompensation nur partiell.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 0.21s;">
                     <h2>Szenario 4:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,15</span></p> <p><strong>pCO₂:</strong> <span>30 mmHg</span></p> <p><strong>pO₂:</strong> <span>90 mmHg</span></p> <p><strong>BE:</strong> <span>-15 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>12 mmol/L</span></p> </div>
-                    <label for="s4_primary">Primäre Störung:</label> <input type="text" id="s4_primary" placeholder="z.B. Metabolische Azidose">
-                    <label for="s4_comp">Kompensation:</label> <input type="text" id="s4_comp" placeholder="z.B. partiell kompensiert">
+                    <label for="s4_primary">Primäre Störung:</label> <input type="text" id="s4_primary" placeholder="">
+                    <label for="s4_comp">Kompensation:</label> <input type="text" id="s4_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer4_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer4_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist stark sauer (7,15). HCO₃⁻ und BE sind stark erniedrigt (12 mmol/L, -15), was auf eine metabolische Azidose als Primärstörung hindeutet. Der pCO₂ ist erniedrigt (30 mmHg), die Lunge versucht also, CO₂ abzuatmen, um den pH zu erhöhen. Da der pH aber noch außerhalb des Normbereichs ist, ist die Kompensation partiell.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 0.28s;">
                     <h2>Szenario 5:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,46</span></p> <p><strong>pCO₂:</strong> <span>32 mmHg</span></p> <p><strong>pO₂:</strong> <span>92 mmHg</span></p> <p><strong>BE:</strong> <span>+5 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>28 mmol/L</span></p> </div>
-                    <label for="s5_primary">Primäre Störung:</label> <input type="text" id="s5_primary" placeholder="z.B. Metabolische Alkalose">
-                    <label for="s5_comp">Kompensation:</label> <input type="text" id="s5_comp" placeholder="z.B. partiell kompensiert">
+                    <label for="s5_primary">Primäre Störung:</label> <input type="text" id="s5_primary" placeholder="">
+                    <label for="s5_comp">Kompensation:</label> <input type="text" id="s5_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer5_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer5_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Alkalose</p> <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist leicht basisch (7,46). HCO₃⁻ und BE sind erhöht (28 mmol/L, +5), was auf eine metabolische Alkalose als Primärstörung hindeutet. Der pCO₂ ist erniedrigt (32 mmHg), die Lunge versucht also, weniger CO₂ abzuatmen, um den pH zu senken. Da der pH aber noch außerhalb des Normbereichs ist, ist die Kompensation partiell.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 0.35s;">
                     <h2>Szenario 6:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,38</span></p> <p><strong>pCO₂:</strong> <span>30 mmHg</span></p> <p><strong>pO₂:</strong> <span>95 mmHg</span></p> <p><strong>BE:</strong> <span>-6 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>18 mmol/L</span></p> </div>
-                    <label for="s6_primary">Primäre Störung:</label> <input type="text" id="s6_primary" placeholder="z.B. Metabolische Azidose">
-                    <label for="s6_comp">Kompensation:</label> <input type="text" id="s6_comp" placeholder="z.B. vollständig kompensiert">
+                    <label for="s6_primary">Primäre Störung:</label> <input type="text" id="s6_primary" placeholder="">
+                    <label for="s6_comp">Kompensation:</label> <input type="text" id="s6_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer6_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer6_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Vollständig respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist im Normbereich (7,38). HCO₃⁻ und BE sind erniedrigt (18 mmol/L, -6), was auf eine metabolische Azidose hindeutet. Der pCO₂ ist ebenfalls erniedrigt (30 mmHg), was die respiratorische Kompensation (CO₂ abatmen) anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 0.42s;">
                     <h2>Szenario 7:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,44</span></p> <p><strong>pCO₂:</strong> <span>50 mmHg</span></p> <p><strong>pO₂:</strong> <span>80 mmHg</span></p> <p><strong>BE:</strong> <span>+8 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>32 mmol/L</span></p> </div>
-                    <label for="s7_primary">Primäre Störung:</label> <input type="text" id="s7_primary" placeholder="z.B. Metabolische Alkalose">
-                    <label for="s7_comp">Kompensation:</label> <input type="text" id="s7_comp" placeholder="z.B. vollständig kompensiert">
+                    <label for="s7_primary">Primäre Störung:</label> <input type="text" id="s7_primary" placeholder="">
+                    <label for="s7_comp">Kompensation:</label> <input type="text" id="s7_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer7_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer7_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Alkalose</p> <p>2.  <strong>Kompensation:</strong> Vollständig respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist im Normbereich (7,44). HCO₃⁻ und BE sind erhöht (32 mmol/L, +8), was auf eine metabolische Alkalose hindeutet. Der pCO₂ ist erhöht (50 mmHg), was die respiratorische Kompensation (CO₂-Retention) anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 0.49s;">
                     <h2>Szenario 8:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,25</span></p> <p><strong>pCO₂:</strong> <span>38 mmHg</span></p> <p><strong>pO₂:</strong> <span>88 mmHg</span></p> <p><strong>BE:</strong> <span>-10 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>16 mmol/L</span></p> </div>
-                    <label for="s8_primary">Primäre Störung:</label> <input type="text" id="s8_primary" placeholder="z.B. Metabolische Azidose">
-                    <label for="s8_comp">Kompensation:</label> <input type="text" id="s8_comp" placeholder="z.B. partiell kompensiert">
+                    <label for="s8_primary">Primäre Störung:</label> <input type="text" id="s8_primary" placeholder="">
+                    <label for="s8_comp">Kompensation:</label> <input type="text" id="s8_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer8_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer8_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist sauer (7,25). HCO₃⁻ und BE sind stark erniedrigt (16 mmol/L, -10), was auf eine metabolische Azidose als Primärstörung hindeutet. Der pCO₂ ist im Normbereich (38 mmHg), aber da der pH so sauer ist und HCO₃⁻/BE so niedrig sind, müsste der pCO₂ bereits niedriger sein, um effektiv zu kompensieren. Es ist also eine partielle Kompensation durch die Lunge, die aber nicht ausreicht, um den pH zu normalisieren.</p> </div>
                 </div>
 
-                <hr class="quiz-divider">
-                <h2 class="section-title-quiz-extra">Neue Szenarien zum Üben!</h2>
+              
 
-                <div class="scenario" style="animation-delay: 0.56s;">
-                    <h2>Szenario 9:</h2>
-                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,05</span></p> <p><strong>pCO₂:</strong> <span>70 mmHg</span></p> <p><strong>pO₂:</strong> <span>60 mmHg</span></p> <p><strong>BE:</strong> <span>-3 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>20 mmol/L</span></p> </div>
-                    <label for="s9_primary">Primäre Störung:</label> <input type="text" id="s9_primary" placeholder="z.B. Gemischte Störung">
-                    <label for="s9_comp">Kompensation:</label> <input type="text" id="s9_comp" placeholder="z.B. nicht zutreffend">
-                    <button class="answer-button" data-answer-id="answer9_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
-                    <div id="answer9_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Gemischte respiratorische und metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Nicht zutreffend</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist extrem sauer (7,05). Der pCO₂ ist hoch (70 mmHg), was eine respiratorische Azidose verursacht. HCO₃⁻ und BE sind erniedrigt (20 mmol/L, -3), was eine metabolische Azidose verursacht. Beide Komponenten verschieben den pH in die saure Richtung, es handelt sich also um eine gemischte Azidose.</p> </div>
-                </div>
+                
                 <div class="scenario" style="animation-delay: 0.63s;">
-                    <h2>Szenario 10:</h2>
+                    <h2>Szenario 9:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,60</span></p> <p><strong>pCO₂:</strong> <span>48 mmHg</span></p> <p><strong>pO₂:</strong> <span>90 mmHg</span></p> <p><strong>BE:</strong> <span>+12 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>36 mmol/L</span></p> </div>
-                    <label for="s10_primary">Primäre Störung:</label> <input type="text" id="s10_primary" placeholder="z.B. Metabolische Alkalose">
-                    <label for="s10_comp">Kompensation:</label> <input type="text" id="s10_comp" placeholder="z.B. partiell kompensiert">
+                    <label for="s10_primary">Primäre Störung:</label> <input type="text" id="s10_primary" placeholder="">
+                    <label for="s10_comp">Kompensation:</label> <input type="text" id="s10_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer10_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer10_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Alkalose</p> <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist stark basisch (7,60). HCO₃⁻ und BE sind stark erhöht (36 mmol/L, +12), was auf eine metabolische Alkalose als Primärstörung hindeutet. Der pCO₂ ist leicht erhöht (48 mmHg), was eine respiratorische Kompensation (CO₂-Retention) anzeigt, um den pH zu senken. Da der pH aber noch sehr hoch ist, ist die Kompensation nur partiell.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 0.70s;">
-                    <h2>Szenario 11:</h2>
+                    <h2>Szenario 10:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,28</span></p> <p><strong>pCO₂:</strong> <span>70 mmHg</span></p> <p><strong>pO₂:</strong> <span>55 mmHg</span></p> <p><strong>BE:</strong> <span>+10 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>35 mmol/L</span></p> </div>
-                    <label for="s11_primary">Primäre Störung:</label> <input type="text" id="s11_primary" placeholder="z.B. Respiratorische Azidose">
-                    <label for="s11_comp">Kompensation:</label> <input type="text" id="s11_comp" placeholder="z.B. partiell kompensiert">
+                    <label for="s11_primary">Primäre Störung:</label> <input type="text" id="s11_primary" placeholder="">
+                    <label for="s11_comp">Kompensation:</label> <input type="text" id="s11_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer11_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer11_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p> <p>2.  <strong>Kompensation:</strong> Partiell metabolisch kompensiert (chronisch)</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist sauer (7,28). Der pCO₂ ist stark erhöht (70 mmHg), was die Azidose verursacht. HCO₃⁻ und BE sind stark erhöht (35 mmol/L, +10), was auf eine starke metabolische Kompensation hindeutet, wie man sie oft bei chronischen respiratorischen Azidosen (z.B. COPD) sieht. Da der pH noch sauer ist, ist die Kompensation partiell.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 0.77s;">
-                    <h2>Szenario 12:</h2>
+                    <h2>Szenario 11:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,37</span></p> <p><strong>pCO₂:</strong> <span>65 mmHg</span></p> <p><strong>pO₂:</strong> <span>75 mmHg</span></p> <p><strong>BE:</strong> <span>+12 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>35 mmol/L</span></p> </div>
-                    <label for="s12_primary">Primäre Störung:</label> <input type="text" id="s12_primary" placeholder="z.B. Respiratorische Azidose">
-                    <label for="s12_comp">Kompensation:</label> <input type="text" id="s12_comp" placeholder="z.B. vollständig kompensiert">
+                    <label for="s12_primary">Primäre Störung:</label> <input type="text" id="s12_primary" placeholder="">
+                    <label for="s12_comp">Kompensation:</label> <input type="text" id="s12_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer12_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer12_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p> <p>2.  <strong>Kompensation:</strong> Vollständig metabolisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist im Normbereich (7,37), aber am unteren Ende. Der pCO₂ ist stark erhöht (65 mmHg), was auf eine respiratorische Azidose hindeutet. HCO₃⁻ und BE sind stark erhöht (35 mmol/L, +12), was auf eine sehr effektive metabolische Kompensation hindeutet. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 0.84s;">
-                    <h2>Szenario 13:</h2>
+                    <h2>Szenario 12:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,50</span></p> <p><strong>pCO₂:</strong> <span>30 mmHg</span></p> <p><strong>pO₂:</strong> <span>90 mmHg</span></p> <p><strong>BE:</strong> <span>0 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>24 mmol/L</span></p> </div>
-                    <label for="s13_primary">Primäre Störung:</label> <input type="text" id="s13_primary" placeholder="z.B. Respiratorische Alkalose">
-                    <label for="s13_comp">Kompensation:</label> <input type="text" id="s13_comp" placeholder="z.B. unkompensiert">
+                    <label for="s13_primary">Primäre Störung:</label> <input type="text" id="s13_primary" placeholder="">
+                    <label for="s13_comp">Kompensation:</label> <input type="text" id="s13_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer13_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer13_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Alkalose</p> <p>2.  <strong>Kompensation:</strong> Unkompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist basisch (7,50). Der pCO₂ ist niedrig (30 mmHg), was die Alkalose verursacht. HCO₃⁻ und BE sind normal, daher keine metabolische Kompensation.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 0.91s;">
-                    <h2>Szenario 14:</h2>
-                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,30</span></p> <p><strong>pCO₂:</strong> <span>48 mmHg</span></p> <p><strong>pO₂:</strong> <span>78 mmHg</span></p> <p><strong>BE:</strong> <span>-5 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>20 mmol/L</span></p> </div>
-                    <label for="s14_primary">Primäre Störung:</label> <input type="text" id="s14_primary" placeholder="z.B. Gemischte Azidose">
-                    <label for="s14_comp">Kompensation:</label> <input type="text" id="s14_comp" placeholder="z.B. nicht zutreffend">
-                    <button class="answer-button" data-answer-id="answer14_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
-                    <div id="answer14_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Gemischte respiratorische und metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Nicht zutreffend</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist sauer (7,30). Der pCO₂ ist erhöht (48 mmHg), was eine respiratorische Azidose verursacht. HCO₃⁻ und BE sind erniedrigt (20 mmol/L, -5), was eine metabolische Azidose verursacht. Beide Komponenten verschieben den pH in die saure Richtung, es handelt sich also um eine gemischte Azidose.</p> </div>
-                </div>
+               
                 <div class="scenario" style="animation-delay: 0.98s;">
-                    <h2>Szenario 15:</h2>
+                    <h2>Szenario 13:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,42</span></p> <p><strong>pCO₂:</strong> <span>30 mmHg</span></p> <p><strong>pO₂:</strong> <span>90 mmHg</span></p> <p><strong>BE:</strong> <span>-4 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>20 mmol/L</span></p> </div>
-                    <label for="s15_primary">Primäre Störung:</label> <input type="text" id="s15_primary" placeholder="z.B. Metabolische Azidose">
-                    <label for="s15_comp">Kompensation:</label> <input type="text" id="s15_comp" placeholder="z.B. vollständig kompensiert">
+                    <label for="s15_primary">Primäre Störung:</label> <input type="text" id="s15_primary" placeholder="">
+                    <label for="s15_comp">Kompensation:</label> <input type="text" id="s15_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer15_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer15_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Vollständig respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist im Normbereich (7,42). HCO₃⁻ und BE sind erniedrigt (20 mmol/L, -4), was auf eine metabolische Azidose hindeutet. Der pCO₂ ist ebenfalls erniedrigt (30 mmHg), was die respiratorische Kompensation anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 1.05s;">
-                    <h2>Szenario 16:</h2>
+                    <h2>Szenario 14:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,37</span></p> <p><strong>pCO₂:</strong> <span>30 mmHg</span></p> <p><strong>pO₂:</strong> <span>95 mmHg</span></p> <p><strong>BE:</strong> <span>-5 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>19 mmol/L</span></p> </div>
-                    <label for="s16_primary">Primäre Störung:</label> <input type="text" id="s16_primary" placeholder="z.B. Metabolische Azidose">
-                    <label for="s16_comp">Kompensation:</label> <input type="text" id="s16_comp" placeholder="z.B. vollständig kompensiert">
+                    <label for="s16_primary">Primäre Störung:</label> <input type="text" id="s16_primary" placeholder="">
+                    <label for="s16_comp">Kompensation:</label> <input type="text" id="s16_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer16_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer16_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Vollständig respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist im Normbereich (7,37). HCO₃⁻ und BE sind erniedrigt (19 mmol/L, -5), was auf eine metabolische Azidose hindeutet. Der pCO₂ ist ebenfalls erniedrigt (30 mmHg), was die respiratorische Kompensation anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 1.12s;">
-                    <h2>Szenario 17:</h2>
+                    <h2>Szenario 15:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,43</span></p> <p><strong>pCO₂:</strong> <span>55 mmHg</span></p> <p><strong>pO₂:</strong> <span>70 mmHg</span></p> <p><strong>BE:</strong> <span>+10 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>34 mmol/L</span></p> </div>
-                    <label for="s17_primary">Primäre Störung:</label> <input type="text" id="s17_primary" placeholder="z.B. Respiratorische Azidose">
+                    <label for="s17_primary">Primäre Störung:</label> <input type="text" id="s17_primary" placeholder="">
                     <label for="s17_comp">Kompensation:</label> <input type="text" id="s17_comp" placeholder="z.B. vollständig kompensiert">
                     <button class="answer-button" data-answer-id="answer17_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer17_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p> <p>2.  <strong>Kompensation:</strong> Vollständig metabolisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist im Normbereich (7,43). Der pCO₂ ist erhöht (55 mmHg), was auf eine respiratorische Azidose hindeutet. HCO₃⁻ und BE sind stark erhöht (34 mmol/L, +10), was auf eine metabolische Kompensation anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 1.19s;">
-                    <h2>Szenario 18:</h2>
+                    <h2>Szenario 16:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,34</span></p> <p><strong>pCO₂:</strong> <span>48 mmHg</span></p> <p><strong>pO₂:</strong> <span>80 mmHg</span></p> <p><strong>BE:</strong> <span>0 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>25 mmol/L</span></p> </div>
-                    <label for="s18_primary">Primäre Störung:</label> <input type="text" id="s18_primary" placeholder="z.B. Respiratorische Azidose">
-                    <label for="s18_comp">Kompensation:</label> <input type="text" id="s18_comp" placeholder="z.B. unkompensiert">
+                    <label for="s18_primary">Primäre Störung:</label> <input type="text" id="s18_primary" placeholder="">
+                    <label for="s18_comp">Kompensation:</label> <input type="text" id="s18_comp" placeholder="">
                     <button class="answer-button" data-answer-id="answer18_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
                     <div id="answer18_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p> <p>2.  <strong>Kompensation:</strong> Unkompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist leicht sauer (7,34). Der pCO₂ ist erhöht (48 mmHg), was eine respiratorische Azidose verursacht. HCO₃⁻ und BE sind noch im Normbereich, daher hat noch keine metabolische Kompensation stattgefunden.</p> </div>
                 </div>
