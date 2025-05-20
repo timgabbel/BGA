@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EASY Intensiv - Ihr smarter Lernbegleiter</title>
+    <link rel="icon" href="favicon.png" type="image/png"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -67,7 +68,7 @@
         /* --- Hauptnavigation (Header) --- */
         #main-site-header {
             background-color: var(--background-content);
-            padding: 15px 0;
+            padding: 10px 0; /* Etwas reduziert für besseres Logo-Fitting */
             box-shadow: var(--shadow-soft);
             position: sticky;
             top: 0;
@@ -86,17 +87,30 @@
 
         .site-logo a {
             font-family: var(--font-heading);
-            font-size: 1.8em;
+            font-size: 1.8em; /* Wird ggf. durch das Bildlogo weniger relevant */
             font-weight: 800;
             color: var(--primary-brand-color);
             text-decoration: none;
+            display: flex; /* Für vertikale Zentrierung des Textes neben dem Bild */
+            align-items: center;
         }
-         .site-logo .logo-icon {
-            width: 28px;
-            height: 28px;
-            vertical-align: -0.1em;
-            margin-right: 8px;
-            fill: var(--primary-brand-color);
+        .site-logo .logo-image { /* NEUE KLASSE für das Bild-Logo */
+            width: auto; /* Automatische Breite, Höhe bestimmt die Größe */
+            height: 45px; /* Höhe des Logos anpassen, ggf. auch 50px oder 40px */
+            margin-right: 10px; /* Abstand zum Text "EASY Intensiv" */
+            vertical-align: middle; /* Bessere Ausrichtung, falls Text daneben steht */
+        }
+        .site-logo .logo-text { /* NEUE KLASSE für den Text neben dem Bild-Logo */
+             /* Farben und Schrift vom Original-Logo übernommen */
+            font-size: 1.2em; /* Größe anpassen, damit es zum Bild passt */
+            font-weight: bold; /* Oder normal, je nach Design */
+        }
+        .site-logo .logo-text .logo-text-easy {
+            color: #C00000; /* Rotton vom Logo */
+        }
+        .site-logo .logo-text .logo-text-intensiv {
+            color: #1F4E79; /* Blauton vom Logo */
+            margin-left: 5px; /* Kleiner Abstand zwischen EASY und Intensiv */
         }
 
 
@@ -421,7 +435,7 @@
             color: #bdc3c7; 
             font-size: 0.85em;
         }
-        #main-site- p {
+        #main-site-footer p { /* Korrigierter Selektor */
             margin: 5px 0;
         }
         #main-site-footer a {
@@ -435,6 +449,8 @@
         /* Responsive Anpassungen */
         @media (max-width: 768px) {
             .header-container { flex-direction: column; gap: 10px; }
+            .site-logo a {font-size: 1.5em;} /* Ggf. Schriftgröße des Textlogos anpassen */
+            .site-logo .logo-image {height: 40px;} /* Ggf. Logogröße für Mobilgeräte anpassen */
             .main-site-nav ul { justify-content: center; flex-wrap: wrap; }
             #main-landing-page .hero-section h1 { font-size: 2.2em; }
             #main-landing-page .hero-section p { font-size: 1.1em; }
@@ -454,7 +470,11 @@
         <div class="header-container">
             <div class="site-logo">
                 <a href="#" data-page="main-landing-page">
-                    <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 11.54L4.23 15 12 18.46 19.77 15 12 13.54zM4 9.34L12 5l8 4.34V15c0 3.87-3.13 7-7 7h-2c-3.87 0-7-3.13-7-7V9.34z"/></svg> EASY Intensiv
+                    <img src="easy-intensiv-logo.png" alt="EASY Intensiv Logo" class="logo-image">
+                    <span class="logo-text">
+                        <span class="logo-text-easy">EASY</span>
+                        <span class="logo-text-intensiv">INTENSIV</span>
+                    </span>
                 </a>
             </div>
             <nav class="main-site-nav">
@@ -572,8 +592,7 @@
                     <div id="answer8_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist sauer (7,25). HCO₃⁻ und BE sind stark erniedrigt (16 mmol/L, -10), was auf eine metabolische Azidose als Primärstörung hindeutet. Der pCO₂ ist im Normbereich (38 mmHg), aber da der pH so sauer ist und HCO₃⁻/BE so niedrig sind, müsste der pCO₂ bereits niedriger sein, um effektiv zu kompensieren. Es ist also eine partielle Kompensation durch die Lunge, die aber nicht ausreicht, um den pH zu normalisieren.</p> </div>
                 </div>
 
-              
-
+        
                 
                 <div class="scenario" style="animation-delay: 0.63s;">
                     <h2>Szenario 9:</h2>
@@ -608,7 +627,7 @@
                     <div id="answer13_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Alkalose</p> <p>2.  <strong>Kompensation:</strong> Unkompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist basisch (7,50). Der pCO₂ ist niedrig (30 mmHg), was die Alkalose verursacht. HCO₃⁻ und BE sind normal, daher keine metabolische Kompensation.</p> </div>
                 </div>
                 <div class="scenario" style="animation-delay: 0.91s;">
-               
+                
                 <div class="scenario" style="animation-delay: 0.98s;">
                     <h2>Szenario 13:</h2>
                     <div class="scenario-data"> <p><strong>pH:</strong> <span>7,42</span></p> <p><strong>pCO₂:</strong> <span>30 mmHg</span></p> <p><strong>pO₂:</strong> <span>90 mmHg</span></p> <p><strong>BE:</strong> <span>-4 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>20 mmol/L</span></p> </div>
