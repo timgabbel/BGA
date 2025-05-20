@@ -3,669 +3,931 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BGA Quiz - Säure-Basen-Haushalt | </title>
+    <title>EASY Intensiv - Ihr smarter Lernbegleiter</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        /* --- Globale Variablen & Reset --- */
         :root {
-            --primary-color: #2D7A9C; /* Ein beruhigendes Blau */
-            --primary-darker: #265073; /* Dunkleres Blau für Hover etc. */
-            --secondary-color: #547D8D; /* Gedämpftes Blau/Petrol */
-            --background-color: #F4F7F9; /* Sehr heller, leicht bläulicher Grauton */
-            --card-background: #FFFFFF;
-            --text-color: #2C3E50; /* Dunkles Schieferblau für Text */
-            --text-light: #5A6F7F; /* Hellerer Text für Details */
-            --border-color: #DCE4E8; /* Heller Rand */
-            --success-bg: #E0F2F1; /* Helles Türkis für Antworten */
-            --success-border: #A7D8D4;
-            --success-text: #004D40; /* Dunkles Grün/Türkis für Antworttext */
-            --input-border-color: #BCCCDC;
-            --input-focus-border: var(--primary-color);
+            --primary-brand-color: #007bff; /* Ein kräftiges, vertrauenswürdiges Blau */
+            --primary-brand-darker: #0056b3;
+            --secondary-accent-color: #17a2b8; /* Ein frisches Türkis/Cyan */
+            --secondary-accent-darker: #117a8b;
+            --highlight-color: #ffc107; /* Ein warmer Gelbton für Akzente */
+            
+            --text-color-dark: #212529;
+            --text-color-medium: #495057;
+            --text-color-light: #6c757d;
+            
+            --background-main: #f8f9fa;
+            --background-content: #ffffff;
+            --border-color-soft: #dee2e6;
+            --border-color-medium: #ced4da;
 
-            --font-primary: 'Montserrat', Arial, sans-serif;
-            --font-secondary: 'Open Sans', Arial, sans-serif;
+            --success-bg-quiz: #e0f2f1; /* Für Quiz-Antworten */
+            --success-border-quiz: #a7d8d4;
+            --success-text-quiz: #004d40;
+
+            --success-bg-modi: #eaf6ff; /* Für Modi-Infos */
+            --success-border-modi: #add8e6;
+            --success-text-modi: #005a9e;
+
+            --font-heading: 'Montserrat', Arial, sans-serif;
+            --font-body: 'Roboto', Arial, sans-serif;
+            --font-quiz-elements: 'Open Sans', Arial, sans-serif; /* Spezifisch für Quiz-Elemente, falls nötig */
+
+            --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.07);
+            --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --border-radius-main: 12px;
+            --border-radius-small: 6px;
+            --transition-main: 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: var(--font-secondary);
-            margin: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: var(--font-body);
+            background-color: var(--background-main);
+            color: var(--text-color-medium);
+            line-height: 1.65;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        .container {
-            max-width: 850px;
-            margin: 30px auto;
+        /* --- Hauptnavigation (Header) --- */
+        #main-site-header {
+            background-color: var(--background-content);
+            padding: 15px 0;
+            box-shadow: var(--shadow-soft);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color-soft);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-logo a {
+            font-family: var(--font-heading);
+            font-size: 1.8em;
+            font-weight: 800;
+            color: var(--primary-brand-color);
+            text-decoration: none;
+        }
+         .site-logo .logo-icon {
+            width: 28px;
+            height: 28px;
+            vertical-align: -0.1em;
+            margin-right: 8px;
+            fill: var(--primary-brand-color);
+        }
+
+
+        .main-site-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 10px; /* Abstand zwischen den Links */
+        }
+
+        .main-site-nav a {
+            font-family: var(--font-heading);
+            color: var(--text-color-medium);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: var(--border-radius-small);
+            font-weight: 600;
+            transition: background-color var(--transition-main), color var(--transition-main);
+            font-size: 0.95em;
+        }
+
+        .main-site-nav a:hover,
+        .main-site-nav a.nav-active {
+            background-color: var(--primary-brand-color);
+            color: white;
+        }
+        
+        /* --- Seiten-Container & Aktive Seite --- */
+        #page-content-area {
+            flex-grow: 1;
+            padding-top: 30px; /* Platz unter dem sticky Header */
+        }
+
+        .page-section {
+            display: none; /* Standardmäßig ausgeblendet */
+            animation: fadeInPage 0.5s ease-out forwards;
+        }
+        
+        .page-section.active-page {
+            display: block;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Globale Container-Klasse für Inhaltsbereiche --- */
+        .content-wrapper { /* Ersetzt .container aus den alten Seiten für bessere Spezifität */
+            max-width: 900px;
+            margin: 0 auto 40px auto;
             padding: 30px 40px;
-            background-color: var(--card-background);
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            background-color: var(--background-content);
+            border-radius: var(--border-radius-main);
+            box-shadow: var(--shadow-medium);
+        }
+        .content-wrapper-fullwidth { /* Für Beatmungsmodi-Seite mit breiterem Layout */
+             max-width: 1000px; /* Etwas breiter */
+             margin: 0 auto 40px auto;
+             padding: 0 20px; /* Padding kommt von den Sektionen innen */
         }
 
-        h1, h2, h3 {
-            font-family: var(--font-primary);
-            color: var(--primary-darker);
-            margin-top: 1.5em;
-            margin-bottom: 0.8em;
+
+        /* --- Hauptseite (#main-landing-page) --- */
+        #main-landing-page .hero-section {
+            background: linear-gradient(135deg, var(--primary-brand-color) 0%, var(--secondary-accent-color) 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            border-radius: var(--border-radius-main);
+            margin: 0 auto 50px auto; /* Zentriert und mit Abstand */
+            max-width: 1100px; /* Breiter Hero */
+            box-shadow: var(--shadow-medium);
+        }
+        #main-landing-page .hero-section .hero-icon {
+            width: 80px;
+            height: 80px;
+            fill: white;
+            margin-bottom: 20px;
+            opacity: 0.8;
         }
 
-        h1 {
+        #main-landing-page .hero-section h1 {
+            font-family: var(--font-heading);
+            font-size: 3em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        #main-landing-page .hero-section p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        #main-landing-page .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px; /* Passend zum Hero */
+            margin: 0 auto 50px auto;
+        }
+
+        #main-landing-page .feature-card {
+            background-color: var(--background-content);
+            padding: 30px;
+            border-radius: var(--border-radius-main);
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+            transition: transform var(--transition-main), box-shadow var(--transition-main);
+        }
+
+        #main-landing-page .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+         #main-landing-page .feature-card .feature-icon {
+            width: 50px;
+            height: 50px;
+            fill: var(--primary-brand-color);
+            margin-bottom: 20px;
+        }
+
+        #main-landing-page .feature-card h2 {
+            font-family: var(--font-heading);
+            font-size: 1.6em;
+            color: var(--primary-brand-darker);
+            margin-bottom: 15px;
+        }
+
+        #main-landing-page .feature-card p {
+            color: var(--text-color-medium);
+            margin-bottom: 25px;
+            font-size: 1em;
+        }
+
+        #main-landing-page .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-accent-color);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            border-radius: 25px; /* Pill shape */
+            transition: background-color var(--transition-main), transform var(--transition-main);
+            font-size: 1em;
+        }
+
+        #main-landing-page .cta-button:hover {
+            background-color: var(--secondary-accent-darker);
+            transform: scale(1.05);
+        }
+        
+        /* --- STILE FÜR BGA QUIZ SEITE --- */
+        #bga-quiz-page h1.quiz-title { /* Eindeutige Klasse für die Hauptüberschrift der Quiz-Seite */
+            font-family: var(--font-heading);
+            color: var(--primary-brand-color);
             font-size: 2.2em;
             text-align: center;
             margin-top: 0;
             margin-bottom: 1em;
-            color: var(--primary-color);
         }
-
-        h2 {
-            font-size: 1.6em;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.3em;
+        #bga-quiz-page .intro-text {
+            font-size: 1.1em; color: var(--text-color-light); text-align: center; margin-bottom: 2em;
         }
-
-        .section-title { /* Für "Normbereiche" und "Neue Szenarien" */
-             font-size: 1.8em;
-             color: var(--primary-darker);
-             margin-top: 2.5em;
-             margin-bottom: 1em;
-             text-align: left;
-             border-bottom: none;
+        #bga-quiz-page .norm-werte-section { margin-bottom: 2em; }
+        #bga-quiz-page .norm-werte-section h2.section-title-quiz, /* Eindeutige Klasse */
+        #bga-quiz-page h2.section-title-quiz-extra  /* Eindeutige Klasse für "Neue Szenarien" */
+        { 
+            font-family: var(--font-heading); color: var(--primary-brand-darker); font-size: 1.5em;
+            border-bottom: 2px solid var(--primary-brand-color); padding-bottom: 0.3em; margin-bottom: 0.7em;
         }
-
-
-        p {
-            margin-bottom: 1em;
-            font-size: 1em;
+        #bga-quiz-page .norm-werte-section ul {
+            list-style-type: none; padding: 15px; margin-bottom: 1.5em; background-color: #fdfdff;
+            border: 1px solid var(--border-color-soft); border-radius: var(--border-radius-small);
         }
+        #bga-quiz-page .norm-werte-section li {
+            padding: 8px 5px; border-bottom: 1px solid #eef2f5; display: flex; justify-content: space-between;
+        }
+        #bga-quiz-page .norm-werte-section li:last-child { border-bottom: none; }
+        #bga-quiz-page .norm-werte-section li strong { color: var(--primary-brand-darker); min-width: 160px; }
+        #bga-quiz-page .norm-werte-section li span { font-weight: 600; color: var(--secondary-accent-color); }
 
-        .intro-text {
-            font-size: 1.1em;
-            color: var(--text-light);
+        #bga-quiz-page hr.quiz-divider { border: none; height: 1px; background-color: var(--border-color-soft); margin: 2.5em 0; }
+        #bga-quiz-page .scenario {
+            border: 1px solid var(--border-color-soft); border-radius: var(--border-radius-main); padding: 20px 25px;
+            margin-bottom: 25px; background-color: var(--background-content); box-shadow: var(--shadow-soft);
+            transition: box-shadow var(--transition-main), transform var(--transition-main);
+            opacity: 0; animation: fadeInPage 0.5s ease-out forwards; 
+        }
+        #bga-quiz-page .scenario:hover { box-shadow: var(--shadow-medium); transform: translateY(-3px); }
+        #bga-quiz-page .scenario h2 { 
+            margin-top: 0; font-size: 1.4em; color: var(--secondary-accent-darker); border-bottom: none; padding-bottom: 0;
+            font-family: var(--font-heading);
+        }
+        #bga-quiz-page .scenario-data p {
+            margin-bottom: 8px; font-size: 0.95em; display: flex; justify-content: space-between;
+            border-bottom: 1px dashed #eef2f5; padding-bottom: 8px; font-family: var(--font-quiz-elements);
+        }
+        #bga-quiz-page .scenario-data p:last-child { border-bottom: none; margin-bottom: 15px; }
+        #bga-quiz-page .scenario-data p strong { color: var(--text-color-dark); margin-right: 10px; }
+        #bga-quiz-page .scenario-data p span { font-weight: 600; color: var(--primary-brand-color); }
+        #bga-quiz-page .scenario label {
+            display: block; margin-top: 15px; margin-bottom: 5px; font-weight: 600;
+            font-family: var(--font-heading); color: var(--primary-brand-darker); font-size: 0.9em;
+        }
+        #bga-quiz-page .scenario input[type="text"] {
+            width: calc(100% - 22px); padding: 12px 10px; margin-bottom: 10px;
+            border: 1px solid var(--border-color-medium); border-radius: var(--border-radius-small);
+            font-family: var(--font-quiz-elements); font-size: 0.95em;
+            transition: border-color var(--transition-main), box-shadow var(--transition-main);
+        }
+        #bga-quiz-page .scenario input[type="text"]:focus {
+            outline: none; border-color: var(--primary-brand-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+        }
+        #bga-quiz-page .scenario input[type="text"]::placeholder { color: #9FB3C8; font-style: italic; }
+        #bga-quiz-page .answer-button {
+            background-color: var(--primary-brand-color); color: white; padding: 12px 20px;
+            border: none; border-radius: var(--border-radius-small); cursor: pointer; margin-top: 20px;
+            font-size: 1em; font-family: var(--font-heading); font-weight: 600;
+            transition: background-color var(--transition-main), transform var(--transition-main);
+            display: inline-flex; align-items: center;
+        }
+        #bga-quiz-page .answer-button:hover { background-color: var(--primary-brand-darker); transform: translateY(-2px); }
+        #bga-quiz-page .answer-button:active { transform: translateY(0px); }
+        #bga-quiz-page .answer-button .button-text { margin-left: 8px; }
+        #bga-quiz-page .answer-button svg { width:18px; height:18px; fill:currentColor; }
+        #bga-quiz-page .answer {
+            max-height: 0; opacity: 0; overflow: hidden; margin-top: 0; padding: 0 20px;
+            background-color: var(--success-bg-quiz); border: 1px solid var(--success-border-quiz);
+            border-left: 5px solid var(--success-text-quiz); border-radius: var(--border-radius-small);
+            color: var(--success-text-quiz);
+            transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+        #bga-quiz-page .answer.answer-visible {
+            max-height: 1000px; opacity: 1; margin-top: 20px; padding: 15px 20px;
+        }
+        #bga-quiz-page .answer p { margin-bottom: 0.5em; font-size: 0.95em; font-family: var(--font-quiz-elements); }
+        #bga-quiz-page .answer p:last-child { margin-bottom: 0; }
+        #bga-quiz-page .answer strong { color: var(--success-text-quiz); font-weight: 600; }
+        #bga-quiz-page .answer .explanation-title {
+            font-weight: bold; display: flex; align-items: center; margin-bottom: 8px;
+            color: var(--success-text-quiz); font-family: var(--font-heading);
+        }
+        #bga-quiz-page .answer .explanation-title svg { margin-right: 8px; width:18px; height:18px; fill:currentColor;}
+
+        /* --- STILE FÜR BEATMUNGSMODI SEITE --- */
+        #beatmungsmodi-page .page-header-modi { 
+            background-color: var(--secondary-accent-color); color: white; padding: 20px 0;
+            text-align: center; margin-bottom: 30px; border-radius: var(--border-radius-main);
+            box-shadow: var(--shadow-soft);
+        }
+        #beatmungsmodi-page .page-header-modi h1 {
+            margin: 0; font-family: var(--font-heading); font-size: 2.2em; font-weight: 700;
+        }
+        #beatmungsmodi-page .quick-nav-modi { text-align: center; margin-bottom: 30px; }
+        #beatmungsmodi-page .quick-nav-modi a {
+            display: inline-block; padding: 10px 20px; margin: 0 10px;
+            background-color: var(--primary-brand-color); color: white; text-decoration: none;
+            font-family: var(--font-heading); font-weight: 600; border-radius: 25px;
+            transition: background-color var(--transition-main), transform var(--transition-main);
+        }
+        #beatmungsmodi-page .quick-nav-modi a:hover {
+            background-color: var(--primary-brand-darker); transform: translateY(-2px);
+        }
+        #beatmungsmodi-page .content-section h2 { 
+            font-family: var(--font-heading); font-size: 1.8em; color: var(--primary-brand-darker);
+            border-bottom: 3px solid var(--secondary-accent-color); padding-bottom: 10px; margin-bottom: 25px;
+        }
+        #beatmungsmodi-page .clickable-list .list-item {
+            background-color: var(--background-content); border-radius: var(--border-radius-small); margin-bottom: 15px;
+            box-shadow: var(--shadow-soft); overflow: hidden; transition: box-shadow var(--transition-main);
+        }
+        #beatmungsmodi-page .clickable-list .list-item:hover { box-shadow: var(--shadow-medium); }
+        #beatmungsmodi-page .item-header {
+            padding: 18px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            background-color: var(--background-content); border-bottom: 1px solid var(--border-color-soft);
+            transition: background-color var(--transition-main);
+        }
+        #beatmungsmodi-page .list-item.active .item-header { background-color: #f7fafd; }
+        #beatmungsmodi-page .item-header h3 {
+            margin: 0; font-family: var(--font-heading); font-size: 1.3em; color: var(--text-color-dark); font-weight: 600;
+        }
+        #beatmungsmodi-page .item-header h3 .drager-note {
+            font-size: 0.8em; font-weight: 400; color: var(--text-color-light);
+        }
+        #beatmungsmodi-page .toggle-icon {
+            font-size: 1.8em; color: var(--secondary-accent-color); transition: transform var(--transition-main); font-weight: 700;
+        }
+        #beatmungsmodi-page .list-item.active .toggle-icon { transform: rotate(45deg); color: var(--highlight-color); }
+        #beatmungsmodi-page .item-content {
+            max-height: 0; opacity: 0; overflow: hidden; padding: 0 25px;
+            transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out, padding var(--transition-main) ease-in-out;
+            background-color: #fdfdfd;
+        }
+        #beatmungsmodi-page .list-item.active .item-content {
+            max-height: 1500px; opacity: 1; padding: 20px 25px; border-top: 1px dashed var(--border-color-soft);
+        }
+        #beatmungsmodi-page .item-content p { margin-bottom: 1em; color: var(--text-color-medium); }
+        #beatmungsmodi-page .item-content p:last-child { margin-bottom: 0; }
+        #beatmungsmodi-page .item-content h4 {
+            font-family: var(--font-heading); font-size: 1.1em; color: var(--primary-brand-darker);
+            margin-top: 1.5em; margin-bottom: 0.5em;
+        }
+        #beatmungsmodi-page .item-content .clinical-relevance {
+            margin-top: 1em; padding: 10px 15px; background-color: var(--success-bg-modi);
+            border-left: 4px solid var(--success-text-modi); border-radius: var(--border-radius-small);
+        }
+        #beatmungsmodi-page .item-content .clinical-relevance strong { color: var(--success-text-modi); }
+
+        /* --- Allgemeiner Footer --- */
+        #main-site-footer {
             text-align: center;
-            margin-bottom: 2em;
+            padding: 25px 20px; 
+            margin-top: auto; 
+            background-color: var(--text-color-dark);
+            color: #bdc3c7; 
+            font-size: 0.85em;
+        }
+        #main-site-footer p {
+            margin: 5px 0;
+        }
+        #main-site-footer a {
+            color: var(--secondary-accent-color);
+            text-decoration: none;
+        }
+        #main-site-footer a:hover {
+            text-decoration: underline;
         }
 
-        .norm-werte-section h2 {
-            border-bottom: none;
-            font-size: 1.4em;
-            margin-bottom: 0.5em;
-            color: var(--primary-darker);
+        /* Responsive Anpassungen */
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; gap: 10px; }
+            .main-site-nav ul { justify-content: center; flex-wrap: wrap; }
+            #main-landing-page .hero-section h1 { font-size: 2.2em; }
+            #main-landing-page .hero-section p { font-size: 1.1em; }
+            .content-wrapper, .content-wrapper-fullwidth { padding: 20px 15px; }
+            #bga-quiz-page .scenario, #beatmungsmodi-page .item-header { padding: 15px; }
+            #bga-quiz-page .scenario input[type="text"] { width: calc(100% - 18px); padding: 10px 8px;}
+
+            #beatmungsmodi-page .page-header-modi h1 { font-size: 1.8em; }
+            #beatmungsmodi-page .content-section h2 { font-size: 1.5em; }
+            #beatmungsmodi-page .item-header h3 { font-size: 1.1em; }
         }
 
-        .norm-werte-section ul {
-            list-style-type: none;
-            padding: 0;
-            margin-bottom: 2em;
-            background-color: #fdfdff; /* Leichter Hintergrund für die Liste */
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
-        }
-
-        .norm-werte-section li {
-            padding: 8px 5px;
-            border-bottom: 1px solid #eef2f5; /* Subtile Trennlinie */
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .norm-werte-section li:last-child {
-            border-bottom: none;
-        }
-
-        .norm-werte-section li strong {
-            color: var(--primary-darker);
-            min-width: 150px; /* Für bessere Ausrichtung */
-        }
-
-        hr {
-            border: none;
-            height: 1px;
-            background-color: var(--border-color);
-            margin: 2.5em 0;
-        }
-
-        .scenario {
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 20px 25px;
-            margin-bottom: 25px;
-            background-color: var(--card-background);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            transition: box-shadow 0.3s ease;
-        }
-        .scenario:hover {
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-        }
-
-        .scenario h2 { /* Szenario-Titel (Szenario 1, 2 etc.) */
-            margin-top: 0;
-            font-size: 1.4em;
-            color: var(--secondary-color);
-            border-bottom: none; /* Entfernt die Haupt-h2-Linie */
-            padding-bottom: 0;
-        }
-
-        .scenario-data p {
-            margin-bottom: 8px;
-            font-size: 0.95em;
-            display: flex; /* Für bessere Ausrichtung der Werte */
-            justify-content: space-between; /* Verteilt Label und Wert */
-            border-bottom: 1px dashed #eef2f5;
-            padding-bottom: 8px;
-        }
-        .scenario-data p:last-child {
-            border-bottom: none;
-            margin-bottom: 15px; /* Mehr Abstand vor den Eingabefeldern */
-        }
-
-        .scenario-data p strong {
-            color: var(--text-color);
-            margin-right: 10px;
-        }
-
-        .scenario label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 5px;
-            font-weight: 600;
-            font-family: var(--font-primary);
-            color: var(--primary-darker);
-            font-size: 0.9em;
-        }
-
-        .scenario input[type="text"] {
-            width: calc(100% - 22px); /* Berücksichtigt padding und border */
-            padding: 12px 10px;
-            margin-top: 0px;
-            margin-bottom: 10px;
-            border: 1px solid var(--input-border-color);
-            border-radius: 6px;
-            font-family: var(--font-secondary);
-            font-size: 0.95em;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .scenario input[type="text"]:focus {
-            outline: none;
-            border-color: var(--input-focus-border);
-            box-shadow: 0 0 0 3px rgba(45, 122, 156, 0.2);
-        }
-        .scenario input[type="text"]::placeholder {
-            color: #9FB3C8;
-            font-style: italic;
-        }
-
-        .answer-button {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 20px;
-            font-size: 1em;
-            font-family: var(--font-primary);
-            font-weight: 600;
-            transition: background-color 0.2s ease, transform 0.1s ease;
-            display: inline-block; /* Damit margin-top wirkt und es nicht die volle Breite einnimmt */
-        }
-
-        .answer-button:hover {
-            background-color: var(--primary-darker);
-        }
-        .answer-button:active {
-            transform: translateY(1px);
-        }
-
-        .answer {
-            display: none; /* Initial state: hidden */
-            margin-top: 20px;
-            padding: 15px 20px;
-            background-color: var(--success-bg);
-            border: 1px solid var(--success-border);
-            border-left: 5px solid var(--success-text); /* Akzentlinie links */
-            border-radius: 6px;
-            color: var(--success-text);
-        }
-
-        .answer p {
-            margin-bottom: 0.5em;
-            font-size: 0.95em;
-        }
-        .answer p:last-child {
-            margin-bottom: 0;
-        }
-
-        .answer strong {
-            color: var(--success-text); /* Stellt sicher, dass auch strong die richtige Farbe hat */
-            font-weight: 600;
-        }
-        .answer .explanation-title {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 8px;
-            color: var(--success-text);
-        }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <h1>BGA Quiz - Säure-Basen-Haushalt</h1>
-        <p class="intro-text">Willkommen zum BGA-Quiz! Bestimme für jedes Szenario die <strong>primäre Säure-Basen-Störung</strong> und den <strong>Kompensationsstatus</strong>.</p>
-
-        <div class="norm-werte-section">
-            <h2 class="section-title">Normbereiche zur Orientierung:</h2>
-            <ul>
-                <li><strong>pH:</strong> <span>7,35 - 7,45</span></li>
-                <li><strong>pCO₂:</strong> <span>35 - 45 mmHg</span></li>
-                <li><strong>pO₂:</strong> <span>80 - 100 mmHg</span></li>
-                <li><strong>Bicarbonat (HCO₃⁻):</strong> <span>22 - 26 mmol/L</span></li>
-                <li><strong>Basenüberschuss (BE):</strong> <span>-2 bis +2 mmol/L</span></li>
-            </ul>
+    <header id="main-site-header">
+        <div class="header-container">
+            <div class="site-logo">
+                <a href="#" data-page="main-landing-page">
+                    <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 11.54L4.23 15 12 18.46 19.77 15 12 13.54zM4 9.34L12 5l8 4.34V15c0 3.87-3.13 7-7 7h-2c-3.87 0-7-3.13-7-7V9.34z"/></svg> EASY Intensiv
+                </a>
+            </div>
+            <nav class="main-site-nav">
+                <ul>
+                    <li><a href="#" data-page="main-landing-page" class="nav-active">Home</a></li>
+                    <li><a href="#" data-page="bga-quiz-page">BGA Quiz</a></li>
+                    <li><a href="#" data-page="beatmungsmodi-page">Beatmungen</a></li>
+                </ul>
+            </nav>
         </div>
-        <p style="text-align: center; margin-bottom: 2.5em; color: var(--text-light);">Gib deine Antworten in die Textfelder ein und klicke dann auf "Antwort anzeigen", um die Lösung zu sehen.</p>
+    </header>
 
-        <div class="scenario">
-            <h2>Szenario:</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,20</span></p>
-                <p><strong>pCO₂:</strong> <span>60 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>70 mmHg</span></p>
-                <p><strong>BE:</strong> <span>+1 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>26 mmol/L</span></p>
+    <main id="page-content-area">
+        <section id="main-landing-page" class="page-section active-page">
+            <div class="hero-section">
+                 <svg class="hero-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg> <h1>EASY Intensiv</h1>
+                <p>Ihr kompakter Wissensnavigator für die Intensivmedizin. Übersichtlich, verständlich und praxisnah.</p>
             </div>
 
-            <label for="s1_primary">Primäre Störung:</label>
-            <input type="text" id="s1_primary" placeholder="z.B. Respiratorische Azidose">
-            <label for="s1_comp">Kompensation:</label>
-            <input type="text" id="s1_comp" placeholder="z.B. unkompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer1')">Antwort anzeigen</button>
-            <div id="answer1" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p>
-                <p>2.  <strong>Kompensation:</strong> Unkompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist stark sauer (7,20). Der pCO₂ ist hoch (60 mmHg), was eine Azidose verursacht. HCO₃⁻ und BE sind noch im Normbereich, daher hat keine metabolische Kompensation stattgefunden.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg> <h2>BGA Quiz</h2>
+                    <p>Testen und vertiefen Sie Ihr Wissen zur Blutgasanalyse mit interaktiven Fallbeispielen.</p>
+                    <a href="#" data-page="bga-quiz-page" class="cta-button page-nav-link">Zum Quiz</a>
+                </div>
+                <div class="feature-card">
+                     <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.99 10.51c0-1.28-.51-2.45-1.33-3.33-.23-.25-.48-.48-.73-.72C16.28 4.21 14.14 3 11.5 3c-.14 0-.28.01-.41.02C8.18 3.41 6.26 5.27 5.45 7.95 4.96 9.78 5.59 11.71 7 12.82V21h2v-7h6v7h2v-8.18c1.41-1.11 2.04-3.04 1.99-4.82zM11.5 11c-1.08 0-2.06-.42-2.83-1.17A4.002 4.002 0 0 1 8 6.5c0-.34.04-.68.1-.99C8.5 5.18 9.07 5 9.75 5h3.5c.68 0 1.25.18 1.65.51.06.31.1.65.1.99a4.002 4.002 0 0 1-.67 2.33C13.56 10.58 12.58 11 11.5 11z"/></svg> <h2>Beatmungsmodi</h2>
+                    <p>Erhalten Sie einen klaren Überblick über die Grundlagen und wichtigen Parameter der Beatmung.</p>
+                    <a href="#" data-page="beatmungsmodi-page" class="cta-button page-nav-link">Zu den Modi</a>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="scenario">
-            <h2>Szenario:</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,58</span></p>
-                <p><strong>pCO₂:</strong> <span>28 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>98 mmHg</span></p>
-                <p><strong>BE:</strong> <span>-1 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>23 mmol/L</span></p>
-            </div>
-            <label for="s2_primary">Primäre Störung:</label>
-            <input type="text" id="s2_primary" placeholder="z.B. Respiratorische Alkalose">
-            <label for="s2_comp">Kompensation:</label>
-            <input type="text" id="s2_comp" placeholder="z.B. unkompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer2')">Antwort anzeigen</button>
-            <div id="answer2" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Respiratorische Alkalose</p>
-                <p>2.  <strong>Kompensation:</strong> Unkompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist stark basisch (7,58). Der pCO₂ ist niedrig (28 mmHg), was eine Alkalose verursacht. HCO₃⁻ und BE sind im Normbereich, daher hat keine metabolische Kompensation stattgefunden.</p>
-            </div>
-        </div>
+        <section id="bga-quiz-page" class="page-section">
+            <div class="content-wrapper">
+                <h1 class="quiz-title">BGA Quiz - Säure-Basen-Haushalt</h1>
+                <p class="intro-text">Willkommen zum BGA-Quiz! Bestimme für jedes Szenario die <strong>primäre Säure-Basen-Störung</strong> und den <strong>Kompensationsstatus</strong>.</p>
+        
+                <div class="norm-werte-section">
+                    <h2 class="section-title-quiz">Normbereiche zur Orientierung:</h2>
+                    <ul>
+                        <li><strong>pH:</strong> <span>7,35 - 7,45</span></li>
+                        <li><strong>pCO₂:</strong> <span>35 - 45 mmHg</span></li>
+                        <li><strong>pO₂:</strong> <span>80 - 100 mmHg</span></li>
+                        <li><strong>Bicarbonat (HCO₃⁻):</strong> <span>22 - 26 mmol/L</span></li>
+                        <li><strong>Basenüberschuss (BE):</strong> <span>-2 bis +2 mmol/L</span></li>
+                    </ul>
+                </div>
+                <p style="text-align: center; margin-bottom: 2.5em; color: var(--text-color-light);">Gib deine Antworten in die Textfelder ein und klicke dann auf "Antwort anzeigen", um die Lösung zu sehen.</p>
+        
+                <hr class="quiz-divider">
+        
+                <div class="scenario" style="animation-delay: 0.0s;">
+                    <h2>Szenario 1:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,20</span></p> <p><strong>pCO₂:</strong> <span>60 mmHg</span></p> <p><strong>pO₂:</strong> <span>70 mmHg</span></p> <p><strong>BE:</strong> <span>+1 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>26 mmol/L</span></p> </div>
+                    <label for="s1_primary">Primäre Störung:</label> <input type="text" id="s1_primary" placeholder="z.B. Respiratorische Azidose">
+                    <label for="s1_comp">Kompensation:</label> <input type="text" id="s1_comp" placeholder="z.B. unkompensiert">
+                    <button class="answer-button" data-answer-id="answer1_quiz"> <svg class="icon-eye-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg> <svg class="icon-eye-closed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;"><path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.44-4.75C21.27 7.61 17 4.5 12 4.5c-1.77 0-3.39.53-4.78 1.44l2.15 2.15c.57-.23 1.18-.36 1.83-.36zm-4.09 1.33L6.54 7.05C4.78 8.1 3.17 9.83 2 12c1.73 4.39 6 7.5 11 7.5 1.55 0 2.98-.34 4.27-.92l-2.92-2.92C13.26 15.87 12.65 16 12 16c-2.76 0-5-2.24-5-5 0-.65.13-1.26.36-1.83L7.91 8.33zM2.71 3.27l2.16 2.16C3.17 6.92 1.73 8.82 1 12c1.73 4.39 6 7.5 11 7.5 2.01 0 3.84-.57 5.39-1.51l2.32 2.32 1.27-1.27L3.98 2 2.71 3.27z"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer1_quiz" class="answer"> <strong class="explanation-title"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm-2 15-5-5 1.41-1.41l3.59 3.59l7.59-7.59l1.41 1.41l-9 9z"></path></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p> <p>2.  <strong>Kompensation:</strong> Unkompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm-2 15-5-5 1.41-1.41l3.59 3.59l7.59-7.59l1.41 1.41l-9 9z"></path></svg> Erklärung: </strong> <p>Der pH ist stark sauer (7,20). Der pCO₂ ist hoch (60 mmHg), was eine Azidose verursacht. HCO₃⁻ und BE sind noch im Normbereich, daher hat keine metabolische Kompensation stattgefunden.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.07s;">
+                    <h2>Szenario 2:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,58</span></p> <p><strong>pCO₂:</strong> <span>28 mmHg</span></p> <p><strong>pO₂:</strong> <span>98 mmHg</span></p> <p><strong>BE:</strong> <span>-1 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>23 mmol/L</span></p> </div>
+                    <label for="s2_primary">Primäre Störung:</label> <input type="text" id="s2_primary" placeholder="z.B. Respiratorische Alkalose">
+                    <label for="s2_comp">Kompensation:</label> <input type="text" id="s2_comp" placeholder="z.B. unkompensiert">
+                    <button class="answer-button" data-answer-id="answer2_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer2_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Alkalose</p> <p>2.  <strong>Kompensation:</strong> Unkompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist stark basisch (7,58). Der pCO₂ ist niedrig (28 mmHg), was eine Alkalose verursacht. HCO₃⁻ und BE sind im Normbereich, daher hat keine metabolische Kompensation stattgefunden.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.14s;">
+                    <h2>Szenario 3:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,32</span></p> <p><strong>pCO₂:</strong> <span>52 mmHg</span></p> <p><strong>pO₂:</strong> <span>85 mmHg</span></p> <p><strong>BE:</strong> <span>+6 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>30 mmol/L</span></p> </div>
+                    <label for="s3_primary">Primäre Störung:</label> <input type="text" id="s3_primary" placeholder="z.B. Respiratorische Azidose">
+                    <label for="s3_comp">Kompensation:</label> <input type="text" id="s3_comp" placeholder="z.B. partiell kompensiert">
+                    <button class="answer-button" data-answer-id="answer3_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer3_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p> <p>2.  <strong>Kompensation:</strong> Partiell metabolisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist sauer (7,32). Der pCO₂ ist hoch (52 mmHg), was die Azidose verursacht. HCO₃⁻ und BE sind erhöht (30 mmol/L, +6), was eine Kompensation der Nieren zur Pufferung der Säure anzeigt. Da der pH aber noch nicht im Normbereich ist, ist die Kompensation nur partiell.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.21s;">
+                    <h2>Szenario 4:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,15</span></p> <p><strong>pCO₂:</strong> <span>30 mmHg</span></p> <p><strong>pO₂:</strong> <span>90 mmHg</span></p> <p><strong>BE:</strong> <span>-15 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>12 mmol/L</span></p> </div>
+                    <label for="s4_primary">Primäre Störung:</label> <input type="text" id="s4_primary" placeholder="z.B. Metabolische Azidose">
+                    <label for="s4_comp">Kompensation:</label> <input type="text" id="s4_comp" placeholder="z.B. partiell kompensiert">
+                    <button class="answer-button" data-answer-id="answer4_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer4_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist stark sauer (7,15). HCO₃⁻ und BE sind stark erniedrigt (12 mmol/L, -15), was auf eine metabolische Azidose als Primärstörung hindeutet. Der pCO₂ ist erniedrigt (30 mmHg), die Lunge versucht also, CO₂ abzuatmen, um den pH zu erhöhen. Da der pH aber noch außerhalb des Normbereichs ist, ist die Kompensation partiell.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.28s;">
+                    <h2>Szenario 5:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,46</span></p> <p><strong>pCO₂:</strong> <span>32 mmHg</span></p> <p><strong>pO₂:</strong> <span>92 mmHg</span></p> <p><strong>BE:</strong> <span>+5 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>28 mmol/L</span></p> </div>
+                    <label for="s5_primary">Primäre Störung:</label> <input type="text" id="s5_primary" placeholder="z.B. Metabolische Alkalose">
+                    <label for="s5_comp">Kompensation:</label> <input type="text" id="s5_comp" placeholder="z.B. partiell kompensiert">
+                    <button class="answer-button" data-answer-id="answer5_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer5_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Alkalose</p> <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist leicht basisch (7,46). HCO₃⁻ und BE sind erhöht (28 mmol/L, +5), was auf eine metabolische Alkalose als Primärstörung hindeutet. Der pCO₂ ist erniedrigt (32 mmHg), die Lunge versucht also, weniger CO₂ abzuatmen, um den pH zu senken. Da der pH aber noch außerhalb des Normbereichs ist, ist die Kompensation partiell.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.35s;">
+                    <h2>Szenario 6:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,38</span></p> <p><strong>pCO₂:</strong> <span>30 mmHg</span></p> <p><strong>pO₂:</strong> <span>95 mmHg</span></p> <p><strong>BE:</strong> <span>-6 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>18 mmol/L</span></p> </div>
+                    <label for="s6_primary">Primäre Störung:</label> <input type="text" id="s6_primary" placeholder="z.B. Metabolische Azidose">
+                    <label for="s6_comp">Kompensation:</label> <input type="text" id="s6_comp" placeholder="z.B. vollständig kompensiert">
+                    <button class="answer-button" data-answer-id="answer6_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer6_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Vollständig respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist im Normbereich (7,38). HCO₃⁻ und BE sind erniedrigt (18 mmol/L, -6), was auf eine metabolische Azidose hindeutet. Der pCO₂ ist ebenfalls erniedrigt (30 mmHg), was die respiratorische Kompensation (CO₂ abatmen) anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.42s;">
+                    <h2>Szenario 7:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,44</span></p> <p><strong>pCO₂:</strong> <span>50 mmHg</span></p> <p><strong>pO₂:</strong> <span>80 mmHg</span></p> <p><strong>BE:</strong> <span>+8 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>32 mmol/L</span></p> </div>
+                    <label for="s7_primary">Primäre Störung:</label> <input type="text" id="s7_primary" placeholder="z.B. Metabolische Alkalose">
+                    <label for="s7_comp">Kompensation:</label> <input type="text" id="s7_comp" placeholder="z.B. vollständig kompensiert">
+                    <button class="answer-button" data-answer-id="answer7_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer7_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Alkalose</p> <p>2.  <strong>Kompensation:</strong> Vollständig respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist im Normbereich (7,44). HCO₃⁻ und BE sind erhöht (32 mmol/L, +8), was auf eine metabolische Alkalose hindeutet. Der pCO₂ ist erhöht (50 mmHg), was die respiratorische Kompensation (CO₂-Retention) anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.49s;">
+                    <h2>Szenario 8:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,25</span></p> <p><strong>pCO₂:</strong> <span>38 mmHg</span></p> <p><strong>pO₂:</strong> <span>88 mmHg</span></p> <p><strong>BE:</strong> <span>-10 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>16 mmol/L</span></p> </div>
+                    <label for="s8_primary">Primäre Störung:</label> <input type="text" id="s8_primary" placeholder="z.B. Metabolische Azidose">
+                    <label for="s8_comp">Kompensation:</label> <input type="text" id="s8_comp" placeholder="z.B. partiell kompensiert">
+                    <button class="answer-button" data-answer-id="answer8_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer8_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist sauer (7,25). HCO₃⁻ und BE sind stark erniedrigt (16 mmol/L, -10), was auf eine metabolische Azidose als Primärstörung hindeutet. Der pCO₂ ist im Normbereich (38 mmHg), aber da der pH so sauer ist und HCO₃⁻/BE so niedrig sind, müsste der pCO₂ bereits niedriger sein, um effektiv zu kompensieren. Es ist also eine partielle Kompensation durch die Lunge, die aber nicht ausreicht, um den pH zu normalisieren.</p> </div>
+                </div>
 
-         <div class="scenario">
-            <h2>Szenario:</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,32</span></p>
-                <p><strong>pCO₂:</strong> <span>52 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>85 mmHg</span></p>
-                <p><strong>BE:</strong> <span>+6 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>30 mmol/L</span></p>
-            </div>
-            <label for="s3_primary">Primäre Störung:</label>
-            <input type="text" id="s3_primary" placeholder="z.B. Respiratorische Azidose">
-            <label for="s3_comp">Kompensation:</label>
-            <input type="text" id="s3_comp" placeholder="z.B. partiell kompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer3')">Antwort anzeigen</button>
-            <div id="answer3" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p>
-                <p>2.  <strong>Kompensation:</strong> Partiell metabolisch kompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist sauer (7,32). Der pCO₂ ist hoch (52 mmHg), was die Azidose verursacht. HCO₃⁻ und BE sind erhöht (30 mmol/L, +6), was eine Kompensation der Nieren zur Pufferung der Säure anzeigt. Da der pH aber noch nicht im Normbereich ist, ist die Kompensation nur partiell.</p>
-            </div>
-        </div>
+                <hr class="quiz-divider">
+                <h2 class="section-title-quiz-extra">Neue Szenarien zum Üben!</h2>
 
-        <div class="scenario">
-            <h2>Szenario:</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,15</span></p>
-                <p><strong>pCO₂:</strong> <span>30 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>90 mmHg</span></p>
-                <p><strong>BE:</strong> <span>-15 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>12 mmol/L</span></p>
-            </div>
-            <label for="s4_primary">Primäre Störung:</label>
-            <input type="text" id="s4_primary" placeholder="z.B. Metabolische Azidose">
-            <label for="s4_comp">Kompensation:</label>
-            <input type="text" id="s4_comp" placeholder="z.B. partiell kompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer4')">Antwort anzeigen</button>
-            <div id="answer4" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p>
-                <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist stark sauer (7,15). HCO₃⁻ und BE sind stark erniedrigt (12 mmol/L, -15), was auf eine metabolische Azidose als Primärstörung hindeutet. Der pCO₂ ist erniedrigt (30 mmHg), die Lunge versucht also, CO₂ abzuatmen, um den pH zu erhöhen. Da der pH aber noch außerhalb des Normbereichs ist, ist die Kompensation partiell.</p>
-            </div>
-        </div>
+                <div class="scenario" style="animation-delay: 0.56s;">
+                    <h2>Szenario 9:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,05</span></p> <p><strong>pCO₂:</strong> <span>70 mmHg</span></p> <p><strong>pO₂:</strong> <span>60 mmHg</span></p> <p><strong>BE:</strong> <span>-3 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>20 mmol/L</span></p> </div>
+                    <label for="s9_primary">Primäre Störung:</label> <input type="text" id="s9_primary" placeholder="z.B. Gemischte Störung">
+                    <label for="s9_comp">Kompensation:</label> <input type="text" id="s9_comp" placeholder="z.B. nicht zutreffend">
+                    <button class="answer-button" data-answer-id="answer9_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer9_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Gemischte respiratorische und metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Nicht zutreffend</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist extrem sauer (7,05). Der pCO₂ ist hoch (70 mmHg), was eine respiratorische Azidose verursacht. HCO₃⁻ und BE sind erniedrigt (20 mmol/L, -3), was eine metabolische Azidose verursacht. Beide Komponenten verschieben den pH in die saure Richtung, es handelt sich also um eine gemischte Azidose.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.63s;">
+                    <h2>Szenario 10:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,60</span></p> <p><strong>pCO₂:</strong> <span>48 mmHg</span></p> <p><strong>pO₂:</strong> <span>90 mmHg</span></p> <p><strong>BE:</strong> <span>+12 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>36 mmol/L</span></p> </div>
+                    <label for="s10_primary">Primäre Störung:</label> <input type="text" id="s10_primary" placeholder="z.B. Metabolische Alkalose">
+                    <label for="s10_comp">Kompensation:</label> <input type="text" id="s10_comp" placeholder="z.B. partiell kompensiert">
+                    <button class="answer-button" data-answer-id="answer10_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer10_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Alkalose</p> <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist stark basisch (7,60). HCO₃⁻ und BE sind stark erhöht (36 mmol/L, +12), was auf eine metabolische Alkalose als Primärstörung hindeutet. Der pCO₂ ist leicht erhöht (48 mmHg), was eine respiratorische Kompensation (CO₂-Retention) anzeigt, um den pH zu senken. Da der pH aber noch sehr hoch ist, ist die Kompensation nur partiell.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.70s;">
+                    <h2>Szenario 11:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,28</span></p> <p><strong>pCO₂:</strong> <span>70 mmHg</span></p> <p><strong>pO₂:</strong> <span>55 mmHg</span></p> <p><strong>BE:</strong> <span>+10 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>35 mmol/L</span></p> </div>
+                    <label for="s11_primary">Primäre Störung:</label> <input type="text" id="s11_primary" placeholder="z.B. Respiratorische Azidose">
+                    <label for="s11_comp">Kompensation:</label> <input type="text" id="s11_comp" placeholder="z.B. partiell kompensiert">
+                    <button class="answer-button" data-answer-id="answer11_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer11_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p> <p>2.  <strong>Kompensation:</strong> Partiell metabolisch kompensiert (chronisch)</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist sauer (7,28). Der pCO₂ ist stark erhöht (70 mmHg), was die Azidose verursacht. HCO₃⁻ und BE sind stark erhöht (35 mmol/L, +10), was auf eine starke metabolische Kompensation hindeutet, wie man sie oft bei chronischen respiratorischen Azidosen (z.B. COPD) sieht. Da der pH noch sauer ist, ist die Kompensation partiell.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.77s;">
+                    <h2>Szenario 12:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,37</span></p> <p><strong>pCO₂:</strong> <span>65 mmHg</span></p> <p><strong>pO₂:</strong> <span>75 mmHg</span></p> <p><strong>BE:</strong> <span>+12 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>35 mmol/L</span></p> </div>
+                    <label for="s12_primary">Primäre Störung:</label> <input type="text" id="s12_primary" placeholder="z.B. Respiratorische Azidose">
+                    <label for="s12_comp">Kompensation:</label> <input type="text" id="s12_comp" placeholder="z.B. vollständig kompensiert">
+                    <button class="answer-button" data-answer-id="answer12_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer12_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p> <p>2.  <strong>Kompensation:</strong> Vollständig metabolisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist im Normbereich (7,37), aber am unteren Ende. Der pCO₂ ist stark erhöht (65 mmHg), was auf eine respiratorische Azidose hindeutet. HCO₃⁻ und BE sind stark erhöht (35 mmol/L, +12), was auf eine sehr effektive metabolische Kompensation hindeutet. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.84s;">
+                    <h2>Szenario 13:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,50</span></p> <p><strong>pCO₂:</strong> <span>30 mmHg</span></p> <p><strong>pO₂:</strong> <span>90 mmHg</span></p> <p><strong>BE:</strong> <span>0 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>24 mmol/L</span></p> </div>
+                    <label for="s13_primary">Primäre Störung:</label> <input type="text" id="s13_primary" placeholder="z.B. Respiratorische Alkalose">
+                    <label for="s13_comp">Kompensation:</label> <input type="text" id="s13_comp" placeholder="z.B. unkompensiert">
+                    <button class="answer-button" data-answer-id="answer13_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer13_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Alkalose</p> <p>2.  <strong>Kompensation:</strong> Unkompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist basisch (7,50). Der pCO₂ ist niedrig (30 mmHg), was die Alkalose verursacht. HCO₃⁻ und BE sind normal, daher keine metabolische Kompensation.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.91s;">
+                    <h2>Szenario 14:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,30</span></p> <p><strong>pCO₂:</strong> <span>48 mmHg</span></p> <p><strong>pO₂:</strong> <span>78 mmHg</span></p> <p><strong>BE:</strong> <span>-5 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>20 mmol/L</span></p> </div>
+                    <label for="s14_primary">Primäre Störung:</label> <input type="text" id="s14_primary" placeholder="z.B. Gemischte Azidose">
+                    <label for="s14_comp">Kompensation:</label> <input type="text" id="s14_comp" placeholder="z.B. nicht zutreffend">
+                    <button class="answer-button" data-answer-id="answer14_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer14_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Gemischte respiratorische und metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Nicht zutreffend</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist sauer (7,30). Der pCO₂ ist erhöht (48 mmHg), was eine respiratorische Azidose verursacht. HCO₃⁻ und BE sind erniedrigt (20 mmol/L, -5), was eine metabolische Azidose verursacht. Beide Komponenten verschieben den pH in die saure Richtung, es handelt sich also um eine gemischte Azidose.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 0.98s;">
+                    <h2>Szenario 15:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,42</span></p> <p><strong>pCO₂:</strong> <span>30 mmHg</span></p> <p><strong>pO₂:</strong> <span>90 mmHg</span></p> <p><strong>BE:</strong> <span>-4 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>20 mmol/L</span></p> </div>
+                    <label for="s15_primary">Primäre Störung:</label> <input type="text" id="s15_primary" placeholder="z.B. Metabolische Azidose">
+                    <label for="s15_comp">Kompensation:</label> <input type="text" id="s15_comp" placeholder="z.B. vollständig kompensiert">
+                    <button class="answer-button" data-answer-id="answer15_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer15_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Vollständig respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist im Normbereich (7,42). HCO₃⁻ und BE sind erniedrigt (20 mmol/L, -4), was auf eine metabolische Azidose hindeutet. Der pCO₂ ist ebenfalls erniedrigt (30 mmHg), was die respiratorische Kompensation anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 1.05s;">
+                    <h2>Szenario 16:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,37</span></p> <p><strong>pCO₂:</strong> <span>30 mmHg</span></p> <p><strong>pO₂:</strong> <span>95 mmHg</span></p> <p><strong>BE:</strong> <span>-5 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>19 mmol/L</span></p> </div>
+                    <label for="s16_primary">Primäre Störung:</label> <input type="text" id="s16_primary" placeholder="z.B. Metabolische Azidose">
+                    <label for="s16_comp">Kompensation:</label> <input type="text" id="s16_comp" placeholder="z.B. vollständig kompensiert">
+                    <button class="answer-button" data-answer-id="answer16_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer16_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p> <p>2.  <strong>Kompensation:</strong> Vollständig respiratorisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist im Normbereich (7,37). HCO₃⁻ und BE sind erniedrigt (19 mmol/L, -5), was auf eine metabolische Azidose hindeutet. Der pCO₂ ist ebenfalls erniedrigt (30 mmHg), was die respiratorische Kompensation anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 1.12s;">
+                    <h2>Szenario 17:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,43</span></p> <p><strong>pCO₂:</strong> <span>55 mmHg</span></p> <p><strong>pO₂:</strong> <span>70 mmHg</span></p> <p><strong>BE:</strong> <span>+10 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>34 mmol/L</span></p> </div>
+                    <label for="s17_primary">Primäre Störung:</label> <input type="text" id="s17_primary" placeholder="z.B. Respiratorische Azidose">
+                    <label for="s17_comp">Kompensation:</label> <input type="text" id="s17_comp" placeholder="z.B. vollständig kompensiert">
+                    <button class="answer-button" data-answer-id="answer17_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer17_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p> <p>2.  <strong>Kompensation:</strong> Vollständig metabolisch kompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist im Normbereich (7,43). Der pCO₂ ist erhöht (55 mmHg), was auf eine respiratorische Azidose hindeutet. HCO₃⁻ und BE sind stark erhöht (34 mmol/L, +10), was auf eine metabolische Kompensation anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p> </div>
+                </div>
+                <div class="scenario" style="animation-delay: 1.19s;">
+                    <h2>Szenario 18:</h2>
+                    <div class="scenario-data"> <p><strong>pH:</strong> <span>7,34</span></p> <p><strong>pCO₂:</strong> <span>48 mmHg</span></p> <p><strong>pO₂:</strong> <span>80 mmHg</span></p> <p><strong>BE:</strong> <span>0 mmol/L</span></p> <p><strong>HCO₃⁻:</strong> <span>25 mmol/L</span></p> </div>
+                    <label for="s18_primary">Primäre Störung:</label> <input type="text" id="s18_primary" placeholder="z.B. Respiratorische Azidose">
+                    <label for="s18_comp">Kompensation:</label> <input type="text" id="s18_comp" placeholder="z.B. unkompensiert">
+                    <button class="answer-button" data-answer-id="answer18_quiz"> <svg class="icon-eye-open"><use xlink:href="#icon-eye-open-path"/></svg> <svg class="icon-eye-closed" style="display: none;"><use xlink:href="#icon-eye-closed-path"/></svg> <span class="button-text">Antwort anzeigen</span> </button>
+                    <div id="answer18_quiz" class="answer"> <strong class="explanation-title"> <svg><use xlink:href="#icon-check-path"/></svg> Richtige Antwort: </strong> <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p> <p>2.  <strong>Kompensation:</strong> Unkompensiert</p> <strong class="explanation-title" style="margin-top:10px;"> <svg style="fill:transparent;"><use xlink:href="#icon-check-path"/></svg> Erklärung: </strong> <p>Der pH ist leicht sauer (7,34). Der pCO₂ ist erhöht (48 mmHg), was eine respiratorische Azidose verursacht. HCO₃⁻ und BE sind noch im Normbereich, daher hat noch keine metabolische Kompensation stattgefunden.</p> </div>
+                </div>
 
-        <div class="scenario">
-            <h2>Szenario:</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,46</span></p>
-                <p><strong>pCO₂:</strong> <span>32 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>92 mmHg</span></p>
-                <p><strong>BE:</strong> <span>+5 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>28 mmol/L</span></p>
-            </div>
-            <label for="s5_primary">Primäre Störung:</label>
-            <input type="text" id="s5_primary" placeholder="z.B. Metabolische Alkalose">
-            <label for="s5_comp">Kompensation:</label>
-            <input type="text" id="s5_comp" placeholder="z.B. partiell kompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer5')">Antwort anzeigen</button>
-            <div id="answer5" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Metabolische Alkalose</p>
-                <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist leicht basisch (7,46). HCO₃⁻ und BE sind erhöht (28 mmol/L, +5), was auf eine metabolische Alkalose als Primärstörung hindeutet. Der pCO₂ ist erniedrigt (32 mmHg), die Lunge versucht also, weniger CO₂ abzuatmen, um den pH zu senken (dies ist die respiratorische Kompensation, die hier ungewöhnlich niedrig ist, aber dennoch in die richtige Richtung geht, um den pH zu senken). Da der pH aber noch außerhalb des Normbereichs ist, ist die Kompensation partiell. (Anmerkung: Ein hoher pCO₂ wäre die typische Kompensation bei metabolischer Alkalose, hier ist der pCO₂ zu niedrig, was auf eine evtl. zusätzliche respiratorische Alkalose oder eine ineffektive Kompensation hindeutet. Für die Quiz-Regeln halten wir uns an die Richtung der Kompensation: pCO₂ geht in die gegenteilige Richtung des pH-Wertes.)</p>
-            </div>
-        </div>
+            </div> </section>
 
-        <hr>
-        <h2 class="section-title">Neue Szenarien zum Üben!</h2>
+        <section id="beatmungsmodi-page" class="page-section">
+            <div class="content-wrapper-fullwidth"> 
+                <header class="page-header-modi">
+                    <h1>Grundlagen der Beatmungsmodi</h1>
+                </header>
+        
+                <nav class="quick-nav-modi">
+                    <a href="#modi_content_anchor">Beatmungsmodi</a>
+                    <a href="#parameter_content_anchor">Beatmungsparameter</a>
+                </nav>
+        
+                <div id="modi_content_anchor" class="content-section"> <h2>Beatmungsmodi kurz und knapp erklärt</h2>
+                    <div class="clickable-list">
+                        <article class="list-item mode-item">
+                            <div class="item-header">
+                                <h3>CPAP <span class="drager-note">(Continuous Positive Airway Pressure) / SPN-CPAP bei Dräger</span></h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-content">
+                                <p>Der Patient atmet vollständig spontan auf einem kontinuierlich erhöhten positiven Druckniveau. Es werden keine mandatorischen Hübe vom Gerät abgegeben. Dieser Modus wird zur Unterstützung der Spontanatmung und zur Verbesserung der Oxygenierung eingesetzt, indem er die Alveolen offen hält.</p>
+                            </div>
+                        </article>
+                        <article class="list-item mode-item">
+                            <div class="item-header">
+                                <h3>BIPAP <span class="drager-note">(Biphasic Positive Airway Pressure) / PC-BIPAP bei Dräger</span></h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-content">
+                                <p>Dieser Modus erlaubt Spontanatmung auf zwei unterschiedlichen positiven Druckniveaus (ein oberes und ein unteres Druckniveau). Das Gerät wechselt zeitgesteuert zwischen diesen Niveaus, wobei der Patient auf beiden Niveaus frei atmen kann. Es ist eine Form der druckkontrollierten Beatmung.</p>
+                            </div>
+                        </article>
+                        <article class="list-item mode-item">
+                            <div class="item-header">
+                                <h3>SIMV <span class="drager-note">(Synchronized Intermittent Mandatory Ventilation)</span></h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-content">
+                                <p>Kombiniert mandatorische (vom Gerät gesteuerte) Beatmungshübe mit Phasen, in denen der Patient spontan atmen kann. Die mandatorischen Hübe werden mit den Inspirationsbemühungen des Patienten synchronisiert, um Asynchronität zu vermeiden.</p>
+                                <h4>VC-SIMV (Volumenkontrollierte SIMV)</h4>
+                                <p>Die mandatorischen Hübe sind volumenkontrolliert mit festem Inspirationsflow. Spontanatmung ist während der Exspirationsphase erlaubt und kann druckunterstützt sein.</p>
+                                <h4>PC-SIMV (Druckkontrollierte SIMV)</h4>
+                                <p>Die mandatorischen Hübe sind druckkontrolliert. Spontanatmung ist während des gesamten Atemzyklus erlaubt und kann ebenfalls druckunterstützt sein.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+        
+                <div id="parameter_content_anchor" class="content-section"> <h2>Wichtige Beatmungsparameter und ihre klinische Bedeutung</h2>
+                    <div class="clickable-list">
+                        <article class="list-item parameter-item">
+                            <div class="item-header">
+                                <h3>Pinsp (Inspirationsdruck)</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-content">
+                                <p>Dies ist der eingestellte Druck, der während der Inspiration in druckkontrollierten Beatmungsmodi (z.B. PC-BIPAP, PC-AC, PC-PSV) erreicht wird. Die Höhe des Pinsp beeinflusst direkt das gelieferte Tidalvolumen, abhängig von der Lungenmechanik des Patienten.</p>
+                                <div class="clinical-relevance">
+                                    <p><strong>Klinische Relevanz:</strong> Eine Anpassung ist nötig, um ein adäquates Tidalvolumen zu erzielen, ohne die Lunge zu überdehnen.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="list-item parameter-item">
+                            <div class="item-header">
+                                <h3>Rampe (Druckanstiegszeit)</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-content">
+                                <p>Bestimmt, wie schnell der eingestellte Inspirationsdruck (Pinsp oder ΔPsupp) erreicht wird.</p>
+                                <div class="clinical-relevance">
+                                   <p><strong>Klinische Relevanz:</strong> Bei Patienten mit obstruktiven Erkrankungen (z.B. COPD) kann eine langsamere Rampe (längere Anstiegszeit) den initialen Spitzenflow reduzieren und so den Komfort verbessern und das Risiko von Patient-Ventilator-Asynchronie verringern. Eine schnellere Rampe liefert den Druck rascher, was bei Patienten mit hohem Atemantrieb nötig sein kann, aber bei zu steiler Einstellung auch zu Druckspitzen oder Unbehagen führen kann.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="list-item parameter-item">
+                            <div class="item-header">
+                                <h3>PEEP (Positiver endexspiratorischer Druck)</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-content">
+                                <p>Der positive Druck, der am Ende der Exspiration in den Atemwegen aufrechterhalten wird.</p>
+                                <div class="clinical-relevance">
+                                    <p><strong>Klinische Relevanz:</strong> PEEP hilft, Alveolen offen zu halten, beugt Atelektasen vor und verbessert die Oxygenierung durch Erhöhung der funktionellen Residualkapazität (FRC). Die Einstellung muss sorgfältig gewählt werden, um hämodynamische Nebenwirkungen oder Überdehnung zu vermeiden.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="list-item parameter-item">
+                            <div class="item-header">
+                                <h3>PAW (Atemwegsdruck)</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-content">
+                                <p>Dies ist der gemessene Druck in den Atemwegen. Es ist ein Überwachungsparameter. Die obere Alarmgrenze für den Atemwegsdruck (Paw hoch) wird eingestellt, um vor zu hohen Drücken zu warnen. Pmax ist der maximal erlaubte Atemwegsdruck und kann mit Paw hoch AutoSet gekoppelt werden.</p>
+                                <div class="clinical-relevance">
+                                   <p><strong>Klinische Relevanz:</strong> Kontinuierliche Überwachung des PAW ist entscheidend, um Barotrauma vorzubeugen und die Effektivität der Beatmung zu beurteilen.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="list-item parameter-item">
+                            <div class="item-header">
+                                <h3>PIP (Inspiratorischer Spitzendruck)</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-content">
+                                <p>Der höchste Druck, der während der Inspirationsphase in den Atemwegen erreicht wird.</p>
+                                <div class="clinical-relevance">
+                                    <p><strong>Klinische Relevanz:</strong> Erhöhte PIP-Werte können auf eine Zunahme des Atemwegswiderstandes (z.B. Bronchospasmus, Sekret) oder eine Abnahme der Lungencompliance hinweisen und das Risiko für Barotrauma erhöhen.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="list-item parameter-item">
+                            <div class="item-header">
+                                <h3>MV (Minutenvolumen)</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-content">
+                                <p>Das Gesamtvolumen an Gas, das pro Minute geatmet wird (Atemfrequenz x Tidalvolumen). Im Handbuch wird oft MVe (exspiratorisches Minutenvolumen) oder das leckagekorrigierte MV genannt. Alarmgrenzen für MVe (hoch und tief) werden eingestellt.</p>
+                                <div class="clinical-relevance">
+                                    <p><strong>Klinische Relevanz:</strong> Ein wichtiger Parameter zur Beurteilung der globalen Ventilation. Ein zu niedriges MV kann zu Hyperkapnie führen, ein zu hohes MV zu Hypokapnie und respiratorischer Alkalose.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="list-item parameter-item">
+                            <div class="item-header">
+                                <h3>I:E (Verhältnis von Inspirationszeit zu Exspirationszeit)</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-content">
+                                <p>Das Verhältnis der Dauer der Inspiration zur Dauer der Exspiration. Kann direkt eingestellt oder aus Ti und AF abgeleitet werden.</p>
+                                <div class="clinical-relevance">
+                                    <p><strong>Klinische Relevanz:</strong> Bei Patienten mit obstruktiven Lungenerkrankungen (z.B. COPD, Asthma) ist eine verlängerte Exspirationszeit (z.B. I:E von 1:1,8 oder 1:2 und länger) wichtig, um eine vollständige Ausatmung zu ermöglichen und "Air Trapping" (dynamische Hyperinflation) zu verhindern. Dies hilft, eine Hyperkapnie zu managen oder zu vermeiden. Bei ARDS wurden inverse I:E-Verhältnisse zur Verbesserung der Oxygenierung eingesetzt, erfordern aber eine engmaschige Überwachung.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="list-item parameter-item">
+                            <div class="item-header">
+                                <h3>TI (Inspirationszeit)</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-content">
+                                <p>Die Dauer der Inspirationsphase eines Beatmungshubes.</p>
+                                <div class="clinical-relevance">
+                                    <p><strong>Klinische Relevanz:</strong> Zusammen mit der Atemfrequenz (AF) bestimmt Ti das I:E-Verhältnis. Eine längere Ti kann die Oxygenierung durch Verbesserung der Gasverteilung und Erhöhung des mittleren Atemwegsdrucks fördern. Allerdings verkürzt eine längere Ti die Exspirationszeit (Te), was bei Patienten mit obstruktiven Erkrankungen zu "Air Trapping" führen kann, wenn Te zu kurz wird. Daher muss bei der Einstellung von Ti immer die resultierende Te und das I:E-Verhältnis im Kontext der zugrundeliegenden Pathologie betrachtet werden, um z.B. eine Hyperkapnie durch unzureichende Exspiration zu vermeiden.</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="list-item parameter-item">
+                            <div class="item-header">
+                                <h3>Trigger (Triggerschwelle, Empfindlichkeit)</h3>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-content">
+                                <p>Das Maß an Patientenanstrengung (gemessen als Flowänderung), das erforderlich ist, um einen Beatmungshub auszulösen.</p>
+                                <div class="clinical-relevance">
+                                    <p><strong>Klinische Relevanz:</strong> Eine zu empfindliche Einstellung kann zu Autotriggering führen (das Gerät gibt Hübe ab, ohne dass der Patient sich bemüht). Eine zu unempfindliche Einstellung erhöht die Atemarbeit des Patienten. Die optimale Triggereinstellung fördert die Synchronizität zwischen Patient und Ventilator. Die Leckageadaption passt die Triggerschwelle bei Leckagen automatisch an.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        <div class="scenario">
-            <h2>Szenario:</h2>
-             <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,38</span></p>
-                <p><strong>pCO₂:</strong> <span>30 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>95 mmHg</span></p>
-                <p><strong>BE:</strong> <span>-6 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>18 mmol/L</span></p>
-            </div>
-            <label for="s6_primary">Primäre Störung:</label>
-            <input type="text" id="s6_primary" placeholder="z.B. Metabolische Azidose">
-            <label for="s6_comp">Kompensation:</label>
-            <input type="text" id="s6_comp" placeholder="z.B. vollständig kompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer6')">Antwort anzeigen</button>
-            <div id="answer6" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p>
-                <p>2.  <strong>Kompensation:</strong> Vollständig respiratorisch kompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist im Normbereich (7,38). HCO₃⁻ und BE sind erniedrigt (18 mmol/L, -6), was auf eine metabolische Azidose hindeutet. Der pCO₂ ist ebenfalls erniedrigt (30 mmHg), was die respiratorische Kompensation (CO₂ abatmen) anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p>
-            </div>
-        </div>
+    <footer id="main-site-footer">
+        <p>Diese Webseite dient ausschließlich privaten und persönlichen Informations- und Lernzwecken.</p>
+        <p>&copy; 2024-2025 EASY Intensiv. Keine Impressumspflicht gemäß § 5 TMG aufgrund rein privater, nicht-kommerzieller Nutzung.</p>
+    </footer>
 
-        <div class="scenario">
-            <h2>Szenario:</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,44</span></p>
-                <p><strong>pCO₂:</strong> <span>50 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>80 mmHg</span></p>
-                <p><strong>BE:</strong> <span>+8 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>32 mmol/L</span></p>
-            </div>
-            <label for="s7_primary">Primäre Störung:</label>
-            <input type="text" id="s7_primary" placeholder="z.B. Metabolische Alkalose">
-            <label for="s7_comp">Kompensation:</label>
-            <input type="text" id="s7_comp" placeholder="z.B. vollständig kompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer7')">Antwort anzeigen</button>
-            <div id="answer7" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Metabolische Alkalose</p>
-                <p>2.  <strong>Kompensation:</strong> Vollständig respiratorisch kompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist im Normbereich (7,44). HCO₃⁻ und BE sind erhöht (32 mmol/L, +8), was auf eine metabolische Alkalose hindeutet. Der pCO₂ ist erhöht (50 mmHg), was die respiratorische Kompensation (CO₂-Retention) anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p>
-            </div>
-        </div>
-
-        <div class="scenario">
-            <h2>Szenario:</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,25</span></p>
-                <p><strong>pCO₂:</strong> <span>38 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>88 mmHg</span></p>
-                <p><strong>BE:</strong> <span>-10 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>16 mmol/L</span></p>
-            </div>
-            <label for="s8_primary">Primäre Störung:</label>
-            <input type="text" id="s8_primary" placeholder="z.B. Metabolische Azidose">
-            <label for="s8_comp">Kompensation:</label>
-            <input type="text" id="s8_comp" placeholder="z.B. partiell kompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer8')">Antwort anzeigen</button>
-            <div id="answer8" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p>
-                <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist sauer (7,25). HCO₃⁻ und BE sind stark erniedrigt (16 mmol/L, -10), was auf eine metabolische Azidose als Primärstörung hindeutet. Der pCO₂ ist im Normbereich (38 mmHg), aber da der pH so sauer ist und HCO₃⁻/BE so niedrig sind, müsste der pCO₂ bereits niedriger sein, um effektiv zu kompensieren. Es ist also eine <strong>partielle Kompensation</strong> durch die Lunge, die aber nicht ausreicht, um den pH zu normalisieren. (Hier ist der pCO₂ im Normbereich, zeigt aber keine adäquate Kompensation, daher wird es als partiell kompensiert betrachtet, da der pH noch nicht normal ist und die Lunge mehr tun könnte.)</p>
-            </div>
-        </div>
-
-
-        <div class="scenario">
-            <h2>Szenario :</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,60</span></p>
-                <p><strong>pCO₂:</strong> <span>48 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>90 mmHg</span></p>
-                <p><strong>BE:</strong> <span>+12 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>36 mmol/L</span></p>
-            </div>
-            <label for="s10_primary">Primäre Störung:</label>
-            <input type="text" id="s10_primary" placeholder="z.B. Metabolische Alkalose">
-            <label for="s10_comp">Kompensation:</label>
-            <input type="text" id="s10_comp" placeholder="z.B. unkompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer10')">Antwort anzeigen</button>
-            <div id="answer10" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Metabolische Alkalose</p>
-                <p>2.  <strong>Kompensation:</strong> Partiell respiratorisch kompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist stark basisch (7,60). HCO₃⁻ und BE sind stark erhöht (36 mmol/L, +12), was auf eine metabolische Alkalose als Primärstörung hindeutet. Der pCO₂ ist leicht erhöht (48 mmHg), was eine respiratorische Kompensation (CO₂-Retention) anzeigt, um den pH zu senken. Da der pH aber noch sehr hoch ist, ist die Kompensation nur partiell.</p>
-            </div>
-        </div>
-
-        <div class="scenario">
-            <h2>Szenario :</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,28</span></p>
-                <p><strong>pCO₂:</strong> <span>70 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>55 mmHg</span></p>
-                <p><strong>BE:</strong> <span>+10 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>35 mmol/L</span></p>
-            </div>
-            <label for="s11_primary">Primäre Störung:</label>
-            <input type="text" id="s11_primary" placeholder="z.B. Respiratorische Azidose">
-            <label for="s11_comp">Kompensation:</label>
-            <input type="text" id="s11_comp" placeholder="z.B. partiell kompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer11')">Antwort anzeigen</button>
-            <div id="answer11" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p>
-                <p>2.  <strong>Kompensation:</strong> Partiell metabolisch kompensiert (chronisch)</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist sauer (7,28). Der pCO₂ ist stark erhöht (70 mmHg), was die Azidose verursacht. HCO₃⁻ und BE sind stark erhöht (35 mmol/L, +10), was auf eine starke metabolische Kompensation hindeutet, wie man sie oft bei chronischen respiratorischen Azidosen (z.B. COPD) sieht. Da der pH noch sauer ist, ist die Kompensation partiell.</p>
-            </div>
-        </div>
-
-        <div class="scenario">
-            <h2>Szenario :</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,37</span></p>
-                <p><strong>pCO₂:</strong> <span>65 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>75 mmHg</span></p>
-                <p><strong>BE:</strong> <span>+12 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>35 mmol/L</span></p>
-            </div>
-            <label for="s12_primary">Primäre Störung:</label>
-            <input type="text" id="s12_primary" placeholder="z.B. Respiratorische Azidose">
-            <label for="s12_comp">Kompensation:</label>
-            <input type="text" id="s12_comp" placeholder="z.B. vollständig kompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer12')">Antwort anzeigen</button>
-            <div id="answer12" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p>
-                <p>2.  <strong>Kompensation:</strong> Vollständig metabolisch kompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist im Normbereich (7,37), aber am unteren Ende. Der pCO₂ ist stark erhöht (65 mmHg), was auf eine respiratorische Azidose hindeutet. HCO₃⁻ und BE sind stark erhöht (35 mmol/L, +12), was auf eine sehr effektive metabolische Kompensation hindeutet. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p>
-            </div>
-        </div>
-
-        <div class="scenario">
-            <h2>Szenario :</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,50</span></p>
-                <p><strong>pCO₂:</strong> <span>30 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>90 mmHg</span></p>
-                <p><strong>BE:</strong> <span>+0 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>24 mmol/L</span></p>
-            </div>
-            <label for="s13_primary">Primäre Störung:</label>
-            <input type="text" id="s13_primary" placeholder="z.B. Respiratorische Alkalose">
-            <label for="s13_comp">Kompensation:</label>
-            <input type="text" id="s13_comp" placeholder="z.B. unkompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer13')">Antwort anzeigen</button>
-            <div id="answer13" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Respiratorische Alkalose</p>
-                <p>2.  <strong>Kompensation:</strong> Unkompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist basisch (7,50). Der pCO₂ ist niedrig (30 mmHg), was die Alkalose verursacht. HCO₃⁻ und BE sind normal, daher keine metabolische Kompensation.</p>
-            </div>
-        </div>
-
-        </div>
-
-        <div class="scenario">
-            <h2>Szenario :</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,42</span></p>
-                <p><strong>pCO₂:</strong> <span>30 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>90 mmHg</span></p>
-                <p><strong>BE:</strong> <span>-4 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>20 mmol/L</span></p>
-            </div>
-            <label for="s15_primary">Primäre Störung:</label>
-            <input type="text" id="s15_primary" placeholder="z.B. Metabolische Azidose">
-            <label for="s15_comp">Kompensation:</label>
-            <input type="text" id="s15_comp" placeholder="z.B. vollständig kompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer15')">Antwort anzeigen</button>
-            <div id="answer15" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p>
-                <p>2.  <strong>Kompensation:</strong> Vollständig respiratorisch kompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist im Normbereich (7,42). HCO₃⁻ und BE sind erniedrigt (20 mmol/L, -4), was auf eine metabolische Azidose hindeutet. Der pCO₂ ist ebenfalls erniedrigt (30 mmHg), was die respiratorische Kompensation anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p>
-            </div>
-        </div>
-
-        <div class="scenario">
-            <h2>Szenario :</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,37</span></p>
-                <p><strong>pCO₂:</strong> <span>30 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>95 mmHg</span></p>
-                <p><strong>BE:</strong> <span>-5 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>19 mmol/L</span></p>
-            </div>
-            <label for="s16_primary">Primäre Störung:</label>
-            <input type="text" id="s16_primary" placeholder="z.B. Metabolische Azidose">
-            <label for="s16_comp">Kompensation:</label>
-            <input type="text" id="s16_comp" placeholder="z.B. vollständig kompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer16')">Antwort anzeigen</button>
-            <div id="answer16" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Metabolische Azidose</p>
-                <p>2.  <strong>Kompensation:</strong> Vollständig respiratorisch kompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist im Normbereich (7,37). HCO₃⁻ und BE sind erniedrigt (19 mmol/L, -5), was auf eine metabolische Azidose hindeutet. Der pCO₂ ist ebenfalls erniedrigt (30 mmHg), was die respiratorische Kompensation anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p>
-            </div>
-        </div>
-
-        <div class="scenario">
-            <h2>Szenario :</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,43</span></p>
-                <p><strong>pCO₂:</strong> <span>55 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>70 mmHg</span></p>
-                <p><strong>BE:</strong> <span>+10 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>34 mmol/L</span></p>
-            </div>
-            <label for="s17_primary">Primäre Störung:</label>
-            <input type="text" id="s17_primary" placeholder="z.B. Respiratorische Azidose">
-            <label for="s17_comp">Kompensation:</label>
-            <input type="text" id="s17_comp" placeholder="z.B. vollständig kompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer17')">Antwort anzeigen</button>
-            <div id="answer17" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p>
-                <p>2.  <strong>Kompensation:</strong> Vollständig metabolisch kompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist im Normbereich (7,43). Der pCO₂ ist erhöht (55 mmHg), was auf eine respiratorische Azidose hindeutet. HCO₃⁻ und BE sind stark erhöht (34 mmol/L, +10), was auf eine metabolische Kompensation anzeigt. Da der pH wieder im Normbereich liegt, ist die Kompensation vollständig.</p>
-            </div>
-        </div>
-
-        <div class="scenario">
-            <h2>Szenario 18:</h2>
-            <div class="scenario-data">
-                <p><strong>pH:</strong> <span>7,34</span></p>
-                <p><strong>pCO₂:</strong> <span>48 mmHg</span></p>
-                <p><strong>pO₂:</strong> <span>80 mmHg</span></p>
-                <p><strong>BE:</strong> <span>+0 mmol/L</span></p>
-                <p><strong>HCO₃⁻:</strong> <span>25 mmol/L</span></p>
-            </div>
-            <label for="s18_primary">Primäre Störung:</label>
-            <input type="text" id="s18_primary" placeholder="z.B. Respiratorische Azidose">
-            <label for="s18_comp">Kompensation:</label>
-            <input type="text" id="s18_comp" placeholder="z.B. unkompensiert">
-            <button class="answer-button" onclick="toggleAnswer('answer18')">Antwort anzeigen</button>
-            <div id="answer18" class="answer">
-                <strong class="explanation-title">Richtige Antwort:</strong>
-                <p>1.  <strong>Primäre Störung:</strong> Respiratorische Azidose</p>
-                <p>2.  <strong>Kompensation:</strong> Unkompensiert</p>
-                <strong class="explanation-title" style="margin-top:10px;">Erklärung:</strong>
-                <p>Der pH ist leicht sauer (7,34). Der pCO₂ ist erhöht (48 mmHg), was eine respiratorische Azidose verursacht. HCO₃⁻ und BE sind noch im Normbereich, daher hat noch keine metabolische Kompensation stattgefunden.</p>
-            </div>
-        </div>
-
-    </div>
+    <svg width="0" height="0" style="display:none;">
+        <defs>
+            <path id="icon-eye-open-path" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            <path id="icon-eye-closed-path" d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.44-4.75C21.27 7.61 17 4.5 12 4.5c-1.77 0-3.39.53-4.78 1.44l2.15 2.15c.57-.23 1.18-.36 1.83-.36zm-4.09 1.33L6.54 7.05C4.78 8.1 3.17 9.83 2 12c1.73 4.39 6 7.5 11 7.5 1.55 0 2.98-.34 4.27-.92l-2.92-2.92C13.26 15.87 12.65 16 12 16c-2.76 0-5-2.24-5-5 0-.65.13-1.26.36-1.83L7.91 8.33zM2.71 3.27l2.16 2.16C3.17 6.92 1.73 8.82 1 12c1.73 4.39 6 7.5 11 7.5 2.01 0 3.84-.57 5.39-1.51l2.32 2.32 1.27-1.27L3.98 2 2.71 3.27z"/>
+            <path id="icon-check-path" d="m12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm-2 15-5-5 1.41-1.41l3.59 3.59l7.59-7.59l1.41 1.41l-9 9z"/>
+        </defs>
+    </svg>
 
     <script>
-        function toggleAnswer(answerId) {
-            const answerDiv = document.getElementById(answerId);
-            const button = answerDiv.previousElementSibling; // Das Element vor dem answerDiv ist der Button
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Globale Seitennavigation ---
+            const mainNavLinks = document.querySelectorAll('.main-site-nav a, .page-nav-link, .site-logo a');
+            const pageSections = document.querySelectorAll('.page-section');
+            const defaultPageId = 'main-landing-page';
 
-            if (answerDiv.style.display === 'none' || answerDiv.style.display === '') {
-                answerDiv.style.display = 'block';
-                button.textContent = 'Antwort verbergen'; // Text des Buttons ändern
-            } else {
-                answerDiv.style.display = 'none';
-                button.textContent = 'Antwort anzeigen'; // Text des Buttons zurücksetzen
+            function showPage(pageId) {
+                pageSections.forEach(section => {
+                    section.style.display = (section.id === pageId) ? 'block' : 'none';
+                    section.classList.toggle('active-page', section.id === pageId);
+                });
+                
+                document.querySelectorAll('.main-site-nav a').forEach(link => {
+                     link.classList.toggle('nav-active', link.getAttribute('data-page') === pageId);
+                });
+                window.scrollTo(0, 0);
             }
-        }
-    </script>
 
+            mainNavLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const pageId = link.getAttribute('data-page');
+                    if (pageId) {
+                        showPage(pageId);
+                    }
+                });
+            });
+            
+            showPage(defaultPageId); 
+
+            // --- BGA Quiz Funktionalität ---
+            const quizAnswerButtons = document.querySelectorAll('#bga-quiz-page .answer-button');
+            quizAnswerButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const answerId = button.getAttribute('data-answer-id');
+                    const answerDiv = document.getElementById(answerId);
+                    if (!answerDiv) return; // Sicherstellen, dass das Div existiert
+
+                    const buttonTextSpan = button.querySelector('.button-text');
+                    const openIcon = button.querySelector('.icon-eye-open');
+                    const closedIcon = button.querySelector('.icon-eye-closed');
+
+                    answerDiv.classList.toggle('answer-visible');
+
+                    if (answerDiv.classList.contains('answer-visible')) {
+                        if(buttonTextSpan) buttonTextSpan.textContent = 'Antwort verbergen';
+                        if(openIcon) openIcon.style.display = 'none';
+                        if(closedIcon) closedIcon.style.display = 'inline-block';
+                    } else {
+                        if(buttonTextSpan) buttonTextSpan.textContent = 'Antwort anzeigen';
+                        if(openIcon) openIcon.style.display = 'inline-block';
+                        if(closedIcon) closedIcon.style.display = 'none';
+                    }
+                });
+            });
+
+            const quizScenarios = document.querySelectorAll('#bga-quiz-page .scenario');
+            quizScenarios.forEach((scenario, index) => {
+                if (!scenario.style.animationDelay) {
+                     scenario.style.animationDelay = `${index * 0.07}s`;
+                }
+            });
+
+            // --- Beatmungsmodi Akkordeon Funktionalität ---
+            const accordionItems = document.querySelectorAll('#beatmungsmodi-page .clickable-list .list-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.item-header');
+                if (header) {
+                    header.addEventListener('click', () => {
+                        item.classList.toggle('active');
+                    });
+                }
+            });
+
+            const modiQuickNavLinks = document.querySelectorAll('#beatmungsmodi-page .quick-nav-modi a');
+            modiQuickNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = document.getElementById('main-site-header') ? document.getElementById('main-site-header').offsetHeight : 0;
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset - 20; // 20px extra space
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
-<div class="container">
-        </div> <footer>
-        <p>Diese Webseite dient ausschließlich privaten und persönlichen Zwecken.</p>
-        <p>Gemäß § 5 TMG (Telemediengesetz) besteht daher keine Impressumspflicht.</p>
-        <p>Kontakt: <a href="mailto:2mcurr0z@anonaddy.com">2mcurr0z@anonaddy.com</a></p> 
-        </footer>
 </html>
