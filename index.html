@@ -16,6 +16,7 @@
             --secondary-accent-color: #17a2b8; /* Ein frisches Türkis/Cyan */
             --secondary-accent-darker: #117a8b;
             --highlight-color: #ffc107; /* Ein warmer Gelbton für Akzente */
+            --med-header-color: #e83e8c; /* Ein Pink/Magenta für die Medikamenten-Seite */
             
             --text-color-dark: #212529;
             --text-color-medium: #495057;
@@ -118,6 +119,7 @@
             list-style: none;
             display: flex;
             gap: 10px; /* Abstand zwischen den Links */
+            align-items: center;
         }
 
         .main-site-nav a {
@@ -167,7 +169,7 @@
             box-shadow: var(--shadow-medium);
         }
         .content-wrapper-fullwidth { /* Für Beatmungsmodi-Seite mit breiterem Layout */
-             max-width: 1000px; /* Etwas breiter */
+             max-width: 1200px; /* Breiter für Tabellen */
              margin: 0 auto 40px auto;
              padding: 0 20px; /* Padding kommt von den Sektionen innen */
         }
@@ -181,7 +183,7 @@
             text-align: center;
             border-radius: var(--border-radius-main);
             margin: 0 auto 50px auto; /* Zentriert und mit Abstand */
-            max-width: 1100px; /* Breiter Hero */
+            max-width: 1200px; /* Breiter Hero */
             box-shadow: var(--shadow-medium);
         }
         #main-landing-page .hero-section .hero-icon {
@@ -211,9 +213,9 @@
 
         #main-landing-page .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            max-width: 1100px; /* Passend zum Hero */
+            max-width: 1200px; /* Passend zum Hero */
             margin: 0 auto 50px auto;
         }
 
@@ -224,6 +226,12 @@
             box-shadow: var(--shadow-soft);
             text-align: center;
             transition: transform var(--transition-main), box-shadow var(--transition-main);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #main-landing-page .feature-card .cta-button {
+             margin-top: auto; /* Sorgt dafür, dass der Button immer unten ist */
         }
 
         #main-landing-page .feature-card:hover {
@@ -235,6 +243,7 @@
             height: 50px;
             fill: var(--primary-brand-color);
             margin-bottom: 20px;
+            align-self: center;
         }
 
         #main-landing-page .feature-card h2 {
@@ -248,6 +257,7 @@
             color: var(--text-color-medium);
             margin-bottom: 25px;
             font-size: 1em;
+            flex-grow: 1;
         }
 
         #main-landing-page .cta-button {
@@ -381,50 +391,129 @@
         #beatmungsmodi-page .quick-nav-modi a:hover {
             background-color: var(--primary-brand-darker); transform: translateY(-2px);
         }
-        #beatmungsmodi-page .content-section h2 { 
+        
+        /* Generische Klassen für alle Seiten, nicht nur #beatmungsmodi-page */
+        .content-section h2 { 
             font-family: var(--font-heading); font-size: 1.8em; color: var(--primary-brand-darker);
             border-bottom: 3px solid var(--secondary-accent-color); padding-bottom: 10px; margin-bottom: 25px;
         }
-        #beatmungsmodi-page .clickable-list .list-item {
+        .clickable-list .list-item {
             background-color: var(--background-content); border-radius: var(--border-radius-small); margin-bottom: 15px;
             box-shadow: var(--shadow-soft); overflow: hidden; transition: box-shadow var(--transition-main);
         }
-        #beatmungsmodi-page .clickable-list .list-item:hover { box-shadow: var(--shadow-medium); }
-        #beatmungsmodi-page .item-header {
+        .clickable-list .list-item:hover { box-shadow: var(--shadow-medium); }
+        .item-header {
             padding: 18px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
             background-color: var(--background-content); border-bottom: 1px solid var(--border-color-soft);
             transition: background-color var(--transition-main);
         }
-        #beatmungsmodi-page .list-item.active .item-header { background-color: #f7fafd; }
-        #beatmungsmodi-page .item-header h3 {
+        .list-item.active .item-header { background-color: #f7fafd; }
+        .item-header h3 {
             margin: 0; font-family: var(--font-heading); font-size: 1.3em; color: var(--text-color-dark); font-weight: 600;
         }
-        #beatmungsmodi-page .item-header h3 .drager-note {
+        .item-header h3 .drager-note {
             font-size: 0.8em; font-weight: 400; color: var(--text-color-light);
         }
-        #beatmungsmodi-page .toggle-icon {
+        .toggle-icon {
             font-size: 1.8em; color: var(--secondary-accent-color); transition: transform var(--transition-main); font-weight: 700;
         }
-        #beatmungsmodi-page .list-item.active .toggle-icon { transform: rotate(45deg); color: var(--highlight-color); }
-        #beatmungsmodi-page .item-content {
+        .list-item.active .toggle-icon { transform: rotate(45deg); color: var(--highlight-color); }
+        .item-content {
             max-height: 0; opacity: 0; overflow: hidden; padding: 0 25px;
             transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out, padding var(--transition-main) ease-in-out;
             background-color: #fdfdfd;
         }
-        #beatmungsmodi-page .list-item.active .item-content {
-            max-height: 1500px; opacity: 1; padding: 20px 25px; border-top: 1px dashed var(--border-color-soft);
+        .list-item.active .item-content {
+            max-height: 2500px; /* Erhöht für längere Inhalte */ opacity: 1; padding: 20px 25px; border-top: 1px dashed var(--border-color-soft);
         }
-        #beatmungsmodi-page .item-content p { margin-bottom: 1em; color: var(--text-color-medium); }
-        #beatmungsmodi-page .item-content p:last-child { margin-bottom: 0; }
-        #beatmungsmodi-page .item-content h4 {
+        .item-content p { margin-bottom: 1em; color: var(--text-color-medium); }
+        .item-content p:last-child { margin-bottom: 0; }
+        .item-content h4 {
             font-family: var(--font-heading); font-size: 1.1em; color: var(--primary-brand-darker);
             margin-top: 1.5em; margin-bottom: 0.5em;
         }
-        #beatmungsmodi-page .item-content .clinical-relevance {
+        .item-content .clinical-relevance {
             margin-top: 1em; padding: 10px 15px; background-color: var(--success-bg-modi);
             border-left: 4px solid var(--success-text-modi); border-radius: var(--border-radius-small);
         }
-        #beatmungsmodi-page .item-content .clinical-relevance strong { color: var(--success-text-modi); }
+        .item-content .clinical-relevance strong { color: var(--success-text-modi); }
+        
+        /* --- NEUE STILE FÜR MEDIKAMENTE SEITE --- */
+        #medikamente-page .page-header-meds {
+            background-color: var(--med-header-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius-main);
+            box-shadow: var(--shadow-soft);
+        }
+        #medikamente-page .page-header-meds h1 {
+            margin: 0;
+            font-family: var(--font-heading);
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+        #medikamente-page .content-section h2 {
+            border-bottom-color: var(--med-header-color); /* Farbakzent anpassen */
+             margin-top: 40px; /* Abstand zwischen Sektionen */
+        }
+         #medikamente-page .content-section:first-of-type h2 {
+            margin-top: 0;
+        }
+        
+        /* Responsive Tabelle */
+        .table-responsive-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border: 1px solid var(--border-color-soft);
+            border-radius: var(--border-radius-small);
+            margin-top: 25px;
+        }
+        #medikamente-page table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px; /* Erzwingt horizontales Scrollen bei Bedarf */
+        }
+        #medikamente-page th, #medikamente-page td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color-soft);
+            vertical-align: top;
+        }
+        #medikamente-page thead th {
+            background-color: #f8f9fa;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--primary-brand-darker);
+            position: sticky;
+            top: 0;
+        }
+        #medikamente-page tbody tr:nth-of-type(even) {
+            background-color: #fdfdfd;
+        }
+        #medikamente-page tbody tr:hover {
+            background-color: #eaf6ff;
+        }
+        #medikamente-page td ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+         #medikamente-page td ul li {
+            padding-bottom: 5px;
+        }
+         #medikamente-page td ul li:last-child {
+            padding-bottom: 0;
+        }
+        #medikamente-page td ul li::before {
+            content: "•";
+            color: var(--med-header-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
 
         /* --- Allgemeiner Footer --- */
         #main-site-footer {
@@ -455,12 +544,12 @@
             #main-landing-page .hero-section h1 { font-size: 2.2em; }
             #main-landing-page .hero-section p { font-size: 1.1em; }
             .content-wrapper, .content-wrapper-fullwidth { padding: 20px 15px; }
-            #bga-quiz-page .scenario, #beatmungsmodi-page .item-header { padding: 15px; }
+            #bga-quiz-page .scenario, .item-header { padding: 15px; }
             #bga-quiz-page .scenario input[type="text"] { width: calc(100% - 18px); padding: 10px 8px;}
 
-            #beatmungsmodi-page .page-header-modi h1 { font-size: 1.8em; }
-            #beatmungsmodi-page .content-section h2 { font-size: 1.5em; }
-            #beatmungsmodi-page .item-header h3 { font-size: 1.1em; }
+            #beatmungsmodi-page .page-header-modi h1, #medikamente-page .page-header-meds h1 { font-size: 1.8em; }
+            .content-section h2 { font-size: 1.5em; }
+            .item-header h3 { font-size: 1.1em; }
 
             /* FIX FÜR DIE QUICK-NAV BUTTONS IN DER MOBILANSICHT */
             #beatmungsmodi-page .quick-nav-modi a {
@@ -490,6 +579,7 @@
                     <li><a href="#" data-page="main-landing-page" class="nav-active">Home</a></li>
                     <li><a href="#" data-page="bga-quiz-page">BGA Quiz</a></li>
                     <li><a href="#" data-page="beatmungsmodi-page">Beatmungen</a></li>
+                    <li><a href="#" data-page="medikamente-page">Medikamente</a></li>
                 </ul>
             </nav>
         </div>
@@ -512,6 +602,12 @@
                      <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.99 10.51c0-1.28-.51-2.45-1.33-3.33-.23-.25-.48-.48-.73-.72C16.28 4.21 14.14 3 11.5 3c-.14 0-.28.01-.41.02C8.18 3.41 6.26 5.27 5.45 7.95 4.96 9.78 5.59 11.71 7 12.82V21h2v-7h6v7h2v-8.18c1.41-1.11 2.04-3.04 1.99-4.82zM11.5 11c-1.08 0-2.06-.42-2.83-1.17A4.002 4.002 0 0 1 8 6.5c0-.34.04-.68.1-.99C8.5 5.18 9.07 5 9.75 5h3.5c.68 0 1.25.18 1.65.51.06.31.1.65.1.99a4.002 4.002 0 0 1-.67 2.33C13.56 10.58 12.58 11 11.5 11z"/></svg> <h2>Beatmungsmodi</h2>
                     <p>Erhalten Sie einen klaren Überblick über die Grundlagen und wichtigen Parameter der Beatmung.</p>
                     <a href="#" data-page="beatmungsmodi-page" class="cta-button page-nav-link">Zu den Modi</a>
+                </div>
+                <div class="feature-card">
+                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4c-1.48 0-2.85.43-4.01 1.17l-2.48-1.02-1 2.76L7 9.05c-1.13.9-2.05 2.14-2.5 3.54L2 13v2l2.5-0.59c0.47-2.26 2.21-4.08 4.5-4.52L8.5 8H10v1.5c0 .83.67 1.5 1.5 1.5S13 10.33 13 9.5V8h1.5l-1.55-2.95c1.17-.74 2.53-1.17 4.05-1.17 3.03 0 5.59 2.11 6.22 4.91l-1.87.44zM4.45 19.05l-2.48 1.02 1-2.76L5.45 16c-1.13-.9-2.05-2.14-2.5-3.54L.5 13v-2l2.5.59c.47 2.26 2.21 4.08 4.5 4.52L8 16.5h1.5V15c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v1.5H14l-1.55 2.95c1.17.74 2.53 1.17 4.05 1.17 3.03 0 5.59-2.11 6.22-4.91l-1.87-.44c-.65 3.45-3.68 6.04-7.35 6.04-1.48 0-2.85-.43-4.01-1.17L4.45 19.05z"/></svg>
+                    <h2>Medikamente</h2>
+                    <p>Ein schneller Überblick über die wichtigsten Anästhesie- und Notfallmedikamente, ihre Wirkweisen und Risiken.</p>
+                    <a href="#" data-page="medikamente-page" class="cta-button page-nav-link">Zur Übersicht</a>
                 </div>
             </div>
         </section>
@@ -832,6 +928,188 @@
                 </div>
             </div>
         </section>
+        
+        <section id="medikamente-page" class="page-section">
+            <div class="content-wrapper-fullwidth"> 
+                <header class="page-header-meds">
+                    <h1>Anästhesie- & Notfallmedikamente</h1>
+                </header>
+
+                <div class="content-section" id="wirkmechanismen_anchor">
+                    <h2>Wirkmechanismen im Detail</h2>
+                    <p>Hier wird der Mechanismus der wichtigsten Medikamente kurz und verständlich aufgeschlüsselt, um ein tieferes Verständnis zu ermöglichen.</p>
+                    
+                    <div class="clickable-list" style="margin-top: 25px;">
+                        
+                        <article class="list-item">
+                            <div class="item-header"><h3>Hypnotika</h3><span class="toggle-icon">+</span></div>
+                            <div class="item-content">
+                                <h4>Propofol</h4>
+                                <p><strong>Wirkmechanismus:</strong> Propofol ist ein Agonist am GABA-A-Rezeptor, dem wichtigsten hemmenden (inhibitorischen) Rezeptor im ZNS.  Es verstärkt die Wirkung des körpereigenen Neurotransmitters GABA, wodurch Chlorid-Ionenkanäle länger geöffnet bleiben.  Der verstärkte Einstrom von negativen Chlorid-Ionen in die Nervenzelle führt zu einer Hyperpolarisation der Zellmembran.  Dadurch wird die Zelle schwerer erregbar, was eine generalisierte zentrale Dämpfung zur Folge hat. </p>
+                                <p><strong>Pharmakokinetik (Warum schnelles Erwachen?):</strong> Propofol ist extrem lipophil (fettlöslich).  Nach der Injektion verteilt es sich sehr schnell vom Blut ins ZNS (schneller Wirkbeginn) und von dort aus durch Umverteilung in gut durchblutete Organe und anschließend ins Fettgewebe.  Der Abfall der Plasmakonzentration und damit das Erwachen erfolgen also nicht primär durch Abbau, sondern durch diese schnelle Umverteilung weg vom Wirkort (Gehirn). </p>
+                                
+                                <h4>Thiopental (Barbiturat)</h4>
+                                <p><strong>Wirkmechanismus:</strong> Wie Propofol wirkt auch Thiopental am GABA-A-Rezeptor.  Es verlängert jedoch im Gegensatz zu Benzodiazepinen die Öffnungsdauer des Chlorid-Kanals, anstatt die Öffnungsfrequenz zu erhöhen.  Dies führt zu einem massiven Chlorideinstrom, einer starken Hyperpolarisation und einer potenten hypnotischen Wirkung.  In hohen Dosen kann es GABA-mimetisch wirken, also den Kanal auch ohne GABA direkt öffnen. </p>
+                                <p><strong>Besonderheit:</strong> Aufgrund des schnellen Wirkbeginns durch hohe Lipophilie und der schnellen Umverteilung war es lange das Standard-Einleitungshypnotikum.  Wegen seines Nebenwirkungsprofils wird es heute seltener, aber immer noch z.B. bei Hirndruck oder im Status epilepticus eingesetzt. </p>
+                                
+                                <h4>Etomidat</h4>
+                                <p><strong>Wirkmechanismus:</strong> Etomidat ist ebenfalls ein GABA-A-Rezeptor-Agonist.  Sein großer Vorteil liegt in der ausgeprägten kardiovaskulären Stabilität.  Es beeinflusst den Sympathikotonus und den Barorezeptorreflex kaum, weshalb es bei Risikopatienten (z.B. mit schwerer KHK oder Aortenstenose) eine gute Wahl zur Narkoseeinleitung ist. </p>
+                                <p><strong>Besonderheit & Nachteil:</strong> Es hemmt das Enzym 11-β-Hydroxylase in der Nebenniere und unterdrückt so die körpereigene Kortisolsynthese für mehrere Stunden.  Bei Langzeitanwendung oder bei Sepsis-Patienten ist dies klinisch relevant und ein großer Nachteil. </p>
+
+                                <h4>S-Ketamin</h4>
+                                <p><strong>Wirkmechanismus:</strong> Ketamin ist ein nicht-kompetitiver Antagonist am NMDA-Rezeptor.  Dieser Rezeptor wird normalerweise durch den erregenden (exzitatorischen) Neurotransmitter Glutamat aktiviert.  Indem Ketamin den Rezeptor blockiert, verhindert es die exzitatorische Signalübertragung.  Dies führt zu einer sogenannten dissoziativen Anästhesie: Der Patient ist von seiner Umwelt entkoppelt.  Gleichzeitig hemmt Ketamin die Wiederaufnahme von Katecholaminen, was zu seiner sympathomimetischen Wirkung (Blutdruck- & Herzfrequenzanstieg) führt. </p>
+                            </div>
+                        </article>
+
+                        <article class="list-item">
+                             <div class="item-header"><h3>Benzodiazepine</h3><span class="toggle-icon">+</span></div>
+                             <div class="item-content">
+                                <p><strong>Wirkmechanismus:</strong> Alle Benzodiazepine wirken am GABA-A-Rezeptor als positive allosterische Modulatoren.  Sie binden an eine spezifische Benzodiazepin-Bindungsstelle des Rezeptors (nicht die GABA-Bindungsstelle) und erhöhen die Affinität des Rezeptors für GABA.  Dadurch bindet GABA effektiver, was zu einer häufigeren Öffnung des Chlorid-Kanals führt.  Die Folge ist eine Hyperpolarisation und zentrale Dämpfung mit stark anxiolytischer, sedierender, amnestischer und antikonvulsiver Wirkung. </p>
+                                <p><strong>Unterschiede:</strong> Die verschiedenen Benzodiazepine unterscheiden sich hauptsächlich in ihrer Pharmakokinetik: </p>
+                                <h4>Midazolam</h4>
+                                <p>Kurze Halbwertszeit, schneller Wirkbeginn, gut steuerbar. </p>
+                                <h4>Diazepam</h4>
+                                <p>Lange Halbwertszeit durch aktive Metabolite, langsamerer Wirkeintritt. </p>
+                                <h4>Flunitrazepam</h4>
+                                <p>Sehr potent, lange Wirkdauer. </p>
+                             </div>
+                        </article>
+
+                        <article class="list-item">
+                            <div class="item-header"><h3>Opioide</h3><span class="toggle-icon">+</span></div>
+                            <div class="item-content">
+                               <p><strong>Wirkmechanismus:</strong> Alle Opioide dieser Gruppe sind potente Agonisten an µ-Opioid-Rezeptoren im ZNS (Gehirn und Rückenmark).  Die Aktivierung dieser Rezeptoren führt auf zellulärer Ebene zur Hemmung von Kalziumkanälen und Aktivierung von Kaliumkanälen.  Dies unterdrückt die Freisetzung exzitatorischer Neurotransmitter und hemmt die Schmerzweiterleitung.  Das Resultat ist eine starke Analgesie.  Gleichzeitig wirken sie dämpfend auf das Atemzentrum. </p>
+                               <p><strong>Unterschiede:</strong> Liegen primär in Potenz und Kinetik:</p>
+                               <h4>Fentanyl</h4>
+                               <p>Standard-Opioid. </p>
+                               <h4>Sufentanil</h4>
+                               <p>Noch potenter als Fentanyl. </p>
+                               <h4>Alfentanil</h4>
+                               <p>Weniger potent, aber sehr schneller Wirkbeginn. </p>
+                               <h4>Remifentanil</h4>
+                               <p>Einzigartig, da es durch unspezifische Esterasen im Blut und Gewebe abgebaut wird, was zu einer extrem kurzen Halbwertszeit und exzellenter Steuerbarkeit führt. </p>
+                            </div>
+                        </article>
+
+                        <article class="list-item">
+                            <div class="item-header"><h3>Muskelrelaxanzien</h3><span class="toggle-icon">+</span></div>
+                            <div class="item-content">
+                                <h4>Rocuronium (Nicht-depolarisierend)</h4>
+                                <p><strong>Wirkmechanismus:</strong> Rocuronium ist ein kompetitiver Antagonist am nikotinischen Acetylcholin-Rezeptor (nAChR) der motorischen Endplatte.  Es konkurriert mit dem körpereigenen Acetylcholin um die Bindungsstellen am Rezeptor, ohne diesen selbst zu aktivieren. </p>
+                                <h4>Succinylcholin (Depolarisierend)</h4>
+                                <p><strong>Wirkmechanismus:</strong> Succinylcholin ist ein Agonist am nikotinischen Acetylcholin-Rezeptor.  Es imitiert die Wirkung von Acetylcholin und führt zu einer initialen Depolarisation (Faszikulationen), gefolgt von einer dauerhaften Blockade durch Inaktivierung der Natriumkanäle. </p>
+                            </div>
+                        </article>
+
+                        <article class="list-item">
+                            <div class="item-header"><h3>Volatile Anästhetika</h3><span class="toggle-icon">+</span></div>
+                            <div class="item-content">
+                                <h4>Sevofluran / Isofluran</h4>
+                                <p><strong>Wirkmechanismus:</strong> Multifaktoriell durch Potenzierung hemmender (GABA) und Hemmung erregender (NMDA) Rezeptoren. </p>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+
+                <div class="content-section" id="uebersicht_anchor">
+                    <h2>Übersichtstabelle</h2>
+                    <div class="table-responsive-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Medikament (Wirkstoff)</th>
+                                    <th>Indikation</th>
+                                    <th>Absolute Kontraindikationen</th>
+                                    <th>Wichtigste Nebenwirkungen</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Propofol</strong></td>
+                                    <td><ul><li>Narkoseeinleitung & -aufrechterhaltung</li><li>Sedierung</li></ul></td>
+                                    <td><ul><li>Bekannte Allergie (Propofol, Soja, Ei - letzteres umstritten)</li><li>Schwerez Herzinsuffizienz (stark relativ)</li></ul></td>
+                                    <td><ul><li>Hypotonie, Bradykardie</li><li>Atemdepression, Apnoe</li><li>Injektionsschmerz</li><li>Propofol-Infusions-Syndrom (PRIS)</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Thiopental</strong></td>
+                                    <td><ul><li>Narkoseeinleitung (v.a. bei Hirndruck)</li><li>Status epilepticus</li></ul></td>
+                                    <td><ul><li>Akute intermittierende Porphyrie</li><li>Schwerer Schock, schwere Herzinsuffizienz</li></ul></td>
+                                    <td><ul><li>Starke Hypotonie (Vasodilatation & Kardiodepression)</li><li>Atemdepression</li><li>Gewebenekrose bei paravenöser Gabe</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Etomidat</strong></td>
+                                    <td><ul><li>Narkoseeinleitung bei kardialen Risikopatienten</li></ul></td>
+                                    <td><ul><li>Bekannte Allergie</li><li>Sepsis (stark relativ)</li></ul></td>
+                                    <td><ul><li>Nebennierenrinden-Suppression</li><li>Myoklonien</li><li>Injektionsschmerz</li><li>Postoperative Übelkeit/Erbrechen</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>S-Ketamin</strong></td>
+                                    <td><ul><li>Narkoseeinleitung (v.a. bei hämodyn. Instabilität, Asthma)</li><li>Analgesie (niedrig dosiert)</li></ul></td>
+                                    <td><ul><li>Schwere KHK, unkontrollierte art. Hypertonie</li><li>Psychosen (Anamnese)</li><li>Akuter Hirndruck</li></ul></td>
+                                    <td><ul><li>Sympathomimetik (Tachykardie, Hypertonie)</li><li>Psychomimetische Effekte (Albträume)</li><li>Erhöhter Hirn- und Augeninnendruck</li><li>Hypersalivation</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Midazolam</strong></td>
+                                    <td><ul><li>Anxiolyse (Prämedikation)</li><li>Sedierung</li><li>Antikonvulsive Therapie</li></ul></td>
+                                    <td><ul><li>Myasthenia gravis</li><li>Akutes Engwinkelglaukom</li><li>Schwere respiratorische Insuffizienz</li></ul></td>
+                                    <td><ul><li>Atemdepression, Apnoe</li><li>Hypotonie</li><li>Paradoxe Reaktionen (Erregung)</li><li>Antidot: Flumazenil</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Diazepam / Flunitrazepam</strong></td>
+                                    <td><ul><li>Sedierung, Anxiolyse</li><li>Status epilepticus (Diazepam)</li></ul></td>
+                                    <td><ul><li>Wie Midazolam</li></ul></td>
+                                    <td><ul><li>Wie Midazolam, aber längere Wirkdauer und Gefahr der Akkumulation</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Fentanyl / Sufentanil / Alfentanil</strong></td>
+                                    <td><ul><li>Starke perioperative Analgesie</li></ul></td>
+                                    <td><ul><li>Bekannte Allergie</li></ul></td>
+                                    <td><ul><li>Atemdepression (stark & langanhaltend)</li><li>Bradykardie</li><li>Muskelrigidität ("Thoraxrigidität")</li><li>PONV</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Remifentanil</strong></td>
+                                    <td><ul><li>Intraoperative Analgesie (extrem kurze HWZ, gut steuerbar)</li></ul></td>
+                                    <td><ul><li>Bekannte Allergie</li></ul></td>
+                                    <td><ul><li>Wie Fentanyl, aber Wirkung endet extrem schnell nach Stopp der Zufuhr; Gefahr von postop. Schmerzen</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rocuronium</strong></td>
+                                    <td><ul><li>Muskelrelaxation für Intubation und Operation</li></ul></td>
+                                    <td><ul><li>Bekannte Allergie</li></ul></td>
+                                    <td><ul><li>Geringe Histaminfreisetzung (selten)</li><li>Tachykardie</li><li>Antidot: Sugammadex</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Succinylcholin</strong></td>
+                                    <td><ul><li>Muskelrelaxation für Blitzeinleitung ("Rapid Sequence Induction")</li></ul></td>
+                                    <td><ul><li>Maligne Hyperthermie (Anamnese)</li><li>Hyperkaliämie</li><li>Immobilität > 24h, große Verbrennungen, neuromusk. Erkrankungen</li></ul></td>
+                                    <td><ul><li>Hyperkaliämie (potenziell letal)</li><li>Muskelfaszikulationen, postop. Muskelschmerz</li><li>Bradykardie (v.a. bei Kindern/Repetition)</li><li>MH-Trigger</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sevofluran / Isofluran</strong></td>
+                                    <td><ul><li>Narkoseaufrechterhaltung</li></ul></td>
+                                    <td><ul><li>Maligne Hyperthermie (Anamnese)</li></ul></td>
+                                    <td><ul><li>Dosisabhängige Hypotonie (Vasodilatation)</li><li>Dosisabhängige Atemdepression</li><li>Postoperative Übelkeit/Erbrechen (PONV)</li><li>MH-Trigger</li></ul></td>
+                                </tr>
+                                 <tr>
+                                    <td><strong>Adrenalin (Epinephrin)</strong></td>
+                                    <td><ul><li>Reanimation (Asystolie/PEA)</li><li>Anaphylaktischer Schock</li></ul></td>
+                                    <td><ul><li>Bei Reanimation: Keine!</li></ul></td>
+                                    <td><ul><li>Tachykardie, Arrhythmien, Hypertonie</li><li>Myokardischämie</li><li>Hyperglykämie, Hypokaliämie</li></ul></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Noradrenalin</strong></td>
+                                    <td><ul><li>Vasopressor der 1. Wahl beim septischen Schock</li></ul></td>
+                                    <td><ul><li>Hypovolämie (vor Volumengabe)</li></ul></td>
+                                    <td><ul><li>Starke periphere Vasokonstriktion (Gefahr von Minderperfusion/Nekrosen)</li><li>Reflektorische Bradykardie</li><li>Arrhythmien</li></ul></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
     </main>
 
     <footer id="main-site-footer">
@@ -912,12 +1190,18 @@
                 }
             });
 
-            // --- Beatmungsmodi Akkordeon Funktionalität ---
-            const accordionItems = document.querySelectorAll('#beatmungsmodi-page .clickable-list .list-item');
+            // --- Akkordeon Funktionalität (jetzt für alle Seiten gültig) ---
+            const accordionItems = document.querySelectorAll('.clickable-list .list-item');
             accordionItems.forEach(item => {
                 const header = item.querySelector('.item-header');
                 if (header) {
                     header.addEventListener('click', () => {
+                        // Optional: Andere geöffnete Items in der gleichen Liste schließen
+                        // item.parentElement.querySelectorAll('.list-item.active').forEach(openItem => {
+                        //     if (openItem !== item) {
+                        //         openItem.classList.remove('active');
+                        //     }
+                        // });
                         item.classList.toggle('active');
                     });
                 }
